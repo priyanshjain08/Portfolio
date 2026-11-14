@@ -492,9 +492,6 @@ marquee {
 
 }
 
-ul {
-    display: block;
-}
 
 .assignment-bottom li::before {
     content: "✓";
