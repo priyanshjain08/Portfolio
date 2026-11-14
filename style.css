@@ -476,6 +476,7 @@ marquee {
 .assignment-top {
     height: 30%;
     border: 1px solid black;
+}
 
 .assignment-bottom {
     height: 70%;
@@ -589,5 +590,5 @@ a:hover {
 
 }
 
-}
+
 
