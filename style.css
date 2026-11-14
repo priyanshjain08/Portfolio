@@ -75,6 +75,7 @@ li {
 
 #contact {
     background: var(--blue);
+    color: white;
 }
 
 .dot {
@@ -192,7 +193,14 @@ pre {
 }
 
 marquee {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    background: var(--ink);
+    color: #fff;
+    overflow: hidden;
+    padding: 20px 0;
+    /* display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite; */
 }
 
 .about {
@@ -237,14 +245,27 @@ marquee {
     border-top-right-radius: 50%;
 }
 
-.bold {
+/* .bold {
     width: 90%;
     margin: auto;
     gap: 10px;
     display: flex;
-    border: 5px solid lightcyan;
-    border-radius: 10px;
-    border-left: 5px solid orange;
+    /* border: 5px solid lightcyan; */
+/* border-radius: 10px;
+    border-left: 5px solid orange; */
+/* } */
+
+.bold {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--white);
+    border-left: 5px solid var(--marigold);
+    border-radius: 6px 18px 18px 6px;
+    padding: 20px 22px;
+    margin: 28px 0 40px;
+    box-shadow: 0 10px 30px -18px rgba(14, 27, 77, .35);
+
 }
 
 .box-right>ul {
@@ -253,9 +274,32 @@ marquee {
 
 .skills {
     height: 90vh;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: y;
     color: white;
+    background: var(--ink);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills h4 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: white;
+}
+
+.skills p {
+    color: white;
+}
+
+.skills i {
+    font-size: 2.2rem;
+    width: 44px;
+    text-align: center;
+    transition: transform .4s var(--ease);
+
 }
 
 .cards {
