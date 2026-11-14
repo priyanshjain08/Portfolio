@@ -304,7 +304,11 @@ marquee {
 
 .cards {
     height: 90%;
+
     /* border: 1px solid white; */
+
+    border: 1px solid white;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -315,6 +319,7 @@ marquee {
 .card {
     height: 45%;
     width: 30%;
+
     /* border: 1px solid grey;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
@@ -333,6 +338,13 @@ marquee {
     border-color: var(--marigold);
     background: rgba(255, 255, 255, .1);
 
+
+    border: 1px solid grey;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 10px;
+
 }
 
 .card-top {
@@ -340,7 +352,11 @@ marquee {
     justify-content: center;
     align-items: center;
     height: 60%;
+
     /* border: 1px solid white; */
+
+
+    border: 1px solid white;
 
 }
 
@@ -350,7 +366,11 @@ marquee {
     align-items: center;
     gap: 10px;
     height: 40%;
+
     /* border: 1px solid white; */
+
+    border: 1px solid white;
+
 }
 
 .progress {
@@ -374,7 +394,11 @@ marquee {
 
 .assignment-card {
     height: 90%;
+
     /* border: 1px solid black; */
+
+    border: 1px solid black;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -385,6 +409,7 @@ marquee {
     height: 45%;
     width: 30%;
     border: 1px solid black;
+
     border-radius: 20px;
     transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 
@@ -444,10 +469,16 @@ marquee {
 
 .t4 {
     background-color: var(--ink);
+
 }
+
+.assignment-top {
+    height: 30%;
+    border: 1px solid black;
 
 .assignment-bottom {
     height: 70%;
+
     padding: 46px 26px 28px;
     /* border: 1px solid black; */
 }
@@ -477,6 +508,9 @@ ul {
     font-weight: 700;
     display: grid;
     place-items: center;
+
+    border: 1px solid black;
+
 }
 
 .contact {
@@ -551,4 +585,8 @@ a {
 
 a:hover {
     color: rgb(98, 98, 195);
+
 }
+
+}
+
