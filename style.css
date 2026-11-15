@@ -274,6 +274,18 @@ header {
     color: #fff;
     transform: translateY(-5px) rotate(-8deg);
 }
+/* Hover colours for individual hero icons */
+.icon i.fa-whatsapp:hover {
+    background: #25D366;   /* WhatsApp green */
+}
+
+.icon i.fa-github:hover {
+    background: #111111;   /* GitHub black */
+}
+
+.icon i.fa-envelope:hover {
+    background: #FF8A8A;   /* light red */
+}
 
 /* Arch photo */
 .hero-right {
