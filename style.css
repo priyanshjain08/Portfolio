@@ -1146,3 +1146,196 @@ form textarea:user-invalid {
     }
 }
 
+/* ============ BOOT SCREEN ============
+   Jharokha arch fills up like a blue-pottery vessel, then the two
+   "doors" slide apart to reveal the site. */
+body.booting {
+    overflow: hidden;
+}
+
+/* hold the page's entrance animations until the doors open */
+body.booting>section,
+body.booting>section *,
+body.booting>section *::before,
+body.booting>section *::after {
+    animation-play-state: paused !important;
+}
+
+#boot {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+}
+
+.boot-door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.2%;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .07) 1px, transparent 0) 0 0 / 22px 22px,
+        radial-gradient(55% 55% at 50% 42%, rgba(30, 64, 216, .5), transparent 70%) 0 0 / 200% 100% no-repeat,
+        var(--ink);
+    transition: transform .95s var(--ease);
+}
+
+.boot-door-l {
+    left: 0;
+}
+
+.boot-door-r {
+    right: 0;
+    background-position: 0 0, 100% 0, 0 0;
+}
+
+#boot.boot-open .boot-door-l {
+    transform: translateX(-101%);
+    border-right: 2px solid var(--marigold);
+}
+
+#boot.boot-open .boot-door-r {
+    transform: translateX(101%);
+    border-left: 2px solid var(--marigold);
+}
+
+.boot-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    padding: 24px;
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+#boot.boot-done .boot-content {
+    opacity: 0;
+    transform: scale(.96);
+}
+
+.boot-arch {
+    width: clamp(120px, 20vw, 160px);
+    height: auto;
+    overflow: visible;
+    margin-bottom: 18px;
+}
+
+.boot-line {
+    fill: none;
+    stroke: var(--marigold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    animation: bootDraw 1.3s var(--ease) both;
+}
+
+.boot-line-inner {
+    stroke: rgba(255, 255, 255, .55);
+    stroke-width: 1.2;
+    animation-delay: .35s;
+}
+
+.boot-sun {
+    fill: var(--marigold);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse 2.4s ease-in-out infinite;
+}
+
+.boot-finial {
+    fill: var(--marigold);
+    animation: fadeUp .6s var(--ease) .9s both;
+}
+
+.boot-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    line-height: 1.1;
+    animation: fadeUp .7s var(--ease) .25s both;
+}
+
+.boot-role {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .6);
+    margin-bottom: 22px;
+    animation: fadeUp .7s var(--ease) .4s both;
+}
+
+.boot-status {
+    width: min(280px, 70vw);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .75);
+    font-variant-numeric: tabular-nums;
+}
+
+#boot-num {
+    color: var(--marigold);
+    font-weight: 700;
+}
+
+#boot-msg.swap {
+    animation: fadeUp .35s var(--ease) both;
+}
+
+.boot-meter {
+    width: min(280px, 70vw);
+    height: 3px;
+    margin-top: 8px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, .14);
+    overflow: hidden;
+}
+
+.boot-meter i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--turquoise), var(--marigold));
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+#boot-skip {
+    position: absolute;
+    z-index: 3;
+    right: 24px;
+    bottom: 24px;
+    font: 600 .8rem var(--body);
+    color: rgba(255, 255, 255, .7);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .25);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color .25s, border-color .25s;
+}
+
+#boot-skip:hover {
+    color: var(--white);
+    border-color: var(--marigold);
+}
+
+#boot-skip:focus-visible {
+    outline-color: var(--marigold);
+}
+
+@keyframes bootDraw {
+    from {
+        stroke-dashoffset: 1;
+    }
+}
+
+
