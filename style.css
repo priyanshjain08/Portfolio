@@ -28,6 +28,11 @@
 html {
     scroll-behavior: smooth;
 }
+section {
+    scroll-margin-top: 80px;
+    /* set this to your header's height */
+}
+
 
 body {
     font-family: var(--body);
