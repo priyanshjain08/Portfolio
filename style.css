@@ -841,7 +841,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: kenburns 24s ease-in-out infinite alternate;
+    animation: expand 24s ease-in-out infinite alternate;
 }
 
 .banner::after {
@@ -1066,7 +1066,7 @@ form textarea:user-invalid {
     }
 }
 
-@keyframes kenburns {
+@keyframes expand {
     to {
         transform: scale(1.12) translateX(-2%);
     }
