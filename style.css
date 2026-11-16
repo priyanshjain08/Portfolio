@@ -1005,7 +1005,7 @@ form textarea:user-invalid {
 }
 
 /* ============ KEYFRAMES ============ */
-@keyframes fadeUp {
+/* @keyframes fadeUp {
     from {
         opacity: 0;
         transform: translateY(24px);
@@ -1027,7 +1027,7 @@ form textarea:user-invalid {
     to {
         clip-path: inset(0 0 0 0);
     }
-}
+} */
 
 @keyframes float {
     50% {
@@ -1054,7 +1054,7 @@ form textarea:user-invalid {
     }
 }
 
-@keyframes grow {
+/* @keyframes grow {
     from {
         transform: scaleX(0);
     }
@@ -1064,7 +1064,7 @@ form textarea:user-invalid {
     from {
         transform: scaleY(0);
     }
-}
+} */
 
 @keyframes expand {
     to {
