@@ -272,6 +272,7 @@ header {
     font-size: 1.1rem;
     cursor: pointer;
     transition: transform .3s var(--ease), background .25s, color .25s;
+    text-decoration: none;
 }
 
 .icon i:hover {
