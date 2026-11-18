@@ -292,6 +292,20 @@ header {
     background: #FF8A8A;   /* light red */
 }
 
+.icon a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+}
+
+.icon a:visited {
+    text-decoration: none;
+}
+
+.icon a:hover {
+    text-decoration: none;
+}
+
 /* Arch photo */
 .hero-right {
     position: relative;
