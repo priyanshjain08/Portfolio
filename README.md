@@ -1,117 +1,126 @@
-# Priyansh Jain --- Personal Portfolio
+# Priyansh Jain — Personal Portfolio
 
-A responsive, single-page personal portfolio website for **Priyansh
-Jain**, a first-year BCA student at Dezyne École Collège, Ajmer. The
-site introduces the portfolio owner, presents web-development skills and
-coursework assignments, and provides contact options
-
+A responsive personal portfolio website for **Priyansh Jain**, a BCA student at Dezyne École Collège, Ajmer. The website showcases personal information, education, technical skills, and 11 HTML and CSS coursework assignments through an interactive portfolio.
 
 ## Features
 
--   **Single-page layout** with Home, About, Skills, Assignments, and
-    Contact sections.
--   **Responsive design** with layouts that adapt to desktop, tablet,
-    and mobile screen sizes.
--   **Animated hero section** with an introductory profile,
-    call-to-action links, and skill labels.
--   **About section** with an education overview and learning-path
-    timeline.
--   **Skills section** with visual proficiency meters for HTML5, CSS3,
-    JavaScript, responsive design, Flexbox/Grid, and Git/GitHub.
--   **Assignment cards** describing six HTML and CSS coursework topics.
--   **Contact section** with contact links and a message form.
--   **Motion and interaction details**, including hover transitions,
-    animated elements, and a scrolling skills ticker.
--   **Reduced-motion support** through `prefers-reduced-motion`.
+- **Modern single-page design** with Home, About, Skills, Assignments, and Contact sections.
+- **Animated loading screen** with an introductory boot animation.
+- **Hero section** featuring an introduction, profile visuals, and social links.
+- **About section** highlighting education and learning progress.
+- **Skills section** showcasing HTML5, CSS3, JavaScript, responsive design, Flexbox, Grid, and Git/GitHub.
+- **11 Assignment Projects** showcasing different HTML and CSS concepts.
+- **Clickable Assignment Cards** that redirect visitors to their respective individual project pages.
+- **Keyboard Accessibility** allowing assignment cards to be opened using Enter or Space.
+- **Interactive UI elements** with hover effects, transitions, and animations.
+- **Responsive Layout** designed for desktop, tablet, and mobile devices.
+- **Contact Section** providing contact information and a message form.
+- **Reduced Motion Support** using the `prefers-reduced-motion` media query.
 
 ## Built With
 
--   **HTML5** --- page structure and semantic content.
--   **CSS3** --- styling, responsive layouts, animations, and visual
-    effects.
--   **Google Fonts** --- Bricolage Grotesque and Figtree.
--   **Font Awesome 6.4.0** --- interface and social icons.
--   **Unsplash** --- remote photography used in the page.
+- **HTML5** — Structure and semantic content.
+- **CSS3** — Styling, responsive layouts, animations, and visual effects.
+- **JavaScript** — Interactive elements, loading screen behavior, and assignment navigation.
+- **Google Fonts** — Bricolage Grotesque and Figtree.
+- **Font Awesome** — Icons and visual elements.
+- **Unsplash** — Remote photography and visual assets.
 
-There is no build system, package manager, or JavaScript framework
-required by the supplied HTML file.
+No framework, package manager, or build system is required.
 
-<!--## Getting Started
+## Assignment Projects
 
-### Run locally
+The portfolio features 11 individual coursework assignments covering different web-development concepts.
 
-1.  Download or clone this repository.
-2.  Make sure the portfolio HTML file is named `index.html` (or open the
-    supplied HTML file directly).
-3.  Open `index.html` in a modern web browser.
+Each assignment is presented through a dedicated card. Clicking a card opens its corresponding project page.
 
-You can also run a simple local server from the project directory:
+The projects demonstrate practical implementation of HTML and CSS concepts, including:
 
-``` bash
-python -m http.server 8000
-```
-
-Then visit <http://localhost:8000> in your browser.-->
+- Background images and visual styling.
+- Newspaper-style layouts.
+- Flexbox-based layouts.
+- Dynamic image galleries.
+- Profile card design.
+- Multi-page navigation.
+- HTML table structures.
+- Sidebar navigation and iframe integration.
+- CSS box model.
+- CSS animations.
+- Login form design.
 
 ## Project Structure
 
-``` text
-.
-└── index.html    
-└── style.css
+```text
+Portfolio/
+│
+├── index.html
+├── style.css
+│
+├── Project 1 Background Image/
+├── Project 4 Dynamic Gallery/
+├── Project 6 Multi page navigation/
+├── Project 8-Iframe-main/
+│
+├── Project_2.html
+├── Project_3.html
+├── Project_5.html
+├── Project_7.html
+├── Project_9.html
+├── Project 10-animation.html
+│
+└── Project 11 Login Page/
 ```
 
+<!--*Individual project folders may contain additional HTML, CSS, and image assets.*
 
-<!--## Customization
+## Getting Started
 
-Before publishing, review the HTML and replace the sample or placeholder
-content with your own:
+### Run Locally
 
-1.  **Profile and education:** Update the page title, meta description,
-    name, course details, college information, and learning path.
-2.  **Images:** Replace the Unsplash image URLs with your own images if
-    desired. Keep useful `alt` text for accessibility.
-3.  **Skills:** Edit the skill names, descriptions, and `--w` percentage
-    values used by the progress bars.
-4.  **Assignments:** Change the six assignment cards to match your
-    actual projects and coursework.
-5.  **Contact details:** Update the phone, WhatsApp, email, and location
-    links and visible text.
-6.  **Social profiles:** Replace the generic GitHub and LinkedIn
-    destinations with your own profile URLs.
-7.  **Colors and typography:** Adjust the CSS custom properties in
-    `:root` to change the color palette and font choices.-->
+1. Clone or download this repository.
+2. Extract the downloaded ZIP file if necessary.
+3. Open the project folder.
+4. Open `index.html` in your preferred web browser.
 
-## Contact Form Note
+Alternatively, you can use a local development server:
 
-The current form uses a `mailto:` action. Submitting it attempts to open
-the visitor's default email application with the form fields prepared;
-it does **not** send the message through a website backend. Configure
-the form's recipient address before publishing. For a form that works
-without relying on the visitor's email application, connect a
-form-handling service or implement a backend.
+```bash
+python -m http.server 8000
+```
 
-## External Resources
+Then visit:
 
-The page loads Google Fonts, Font Awesome, and Unsplash images from
-external services. An internet connection is therefore needed for those
-resources to load. The core page structure and embedded CSS are local.
+```text
+http://localhost:8000
+```
+-->
 
-## Accessibility and Responsive Behavior
+## Important Notes
 
-The markup includes section navigation, descriptive image alternative
-text, visible keyboard-focus styling, and a reduced-motion media query.
-Test the page with keyboard navigation and at multiple viewport sizes
-before deployment.
+- **Project Navigation:** Each assignment card links to its respective project using relative file paths.
+- **Folder Structure:** Keep the original folder structure intact. Moving or renaming project files may break assignment navigation.
+- **External Resources:** Google Fonts, Font Awesome, and remotely hosted images require an internet connection.
+- **Contact Form:** The contact form uses a `mailto:` action. It opens the visitor's default email application rather than sending messages through a backend.
+- **Static Website:** The portfolio does not require a database, backend server, or build process.
+
+## Accessibility
+
+The website includes keyboard navigation support, visible focus indicators, descriptive image alternative text, and reduced-motion support.
+
+The responsive layout adapts to different screen sizes to provide a consistent browsing experience across devices.
 
 <!--## Deployment
 
-This is a static website and can be hosted on any static web host.
-Upload the HTML file (named `index.html` for the usual default entry
-point) and ensure the external resource URLs and personal links are
-correct.-->
+This project can be deployed using static hosting platforms such as:
 
-------------------------------------------------------------------------
+- GitHub Pages
+- Netlify
+- Vercel
 
-*Personal portfolio project --- BCA First Year, HTML5 and CSS3
-assignment.*
+Upload the complete project while preserving its folder structure. Ensure that `index.html` is available as the entry point.
+-->
+---
+
+**Personal Portfolio Project**
+
+*Developed as part of BCA coursework and personal web-development practice.*
