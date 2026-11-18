@@ -315,6 +315,9 @@
         <p>Key assignments and projects from the HTML & CSS</p>
         <div class="assignment-card">
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 1 Background Image/Project_1.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="element"></div>
                 <div class="assignment-top t1"></div>
                 <div class="assignment-bottom">
@@ -328,7 +331,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project_2.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t2"></div>
                 <div class="assignment-bottom">
                     <h4>Newspaper Layout</h4>
@@ -341,7 +348,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project_3.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t3"></div>
                 <div class="assignment-bottom">
                     <h4>Flexbox Layout</h4>
@@ -355,6 +366,9 @@
                 </div>
             </div>
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 4 Dynamic Gallery/Project_4.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t4"></div>
                 <div class="assignment-bottom">
                     <h4>Image Gallery</h4>
@@ -368,7 +382,11 @@
 
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project_5.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t5"></div>
                 <div class="assignment-bottom">
                     <h4>Profile Card</h4>
@@ -382,6 +400,9 @@
                 </div>
             </div>
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 6 Multi page navigation/Project_6.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t6"></div>
                 <div class="assignment-bottom">
                     <h4>Navigation Bar Design</h4>
@@ -397,7 +418,11 @@
 
 
 
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project_7.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="element"></div>
                 <div class="assignment-top t1"></div>
                 <div class="assignment-bottom">
@@ -411,7 +436,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 8-Iframe-main/index.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t2"></div>
                 <div class="assignment-bottom">
                     <h4>Sidebar Navigation</h4>
@@ -424,7 +453,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project_9.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t3"></div>
                 <div class="assignment-bottom">
                     <h4>CSS Box Model Structure</h4>
@@ -437,7 +470,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 10-animation.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t4"></div>
                 <div class="assignment-bottom">
                     <h4>CSS Animation Examples</h4>
@@ -451,7 +488,11 @@
 
                 </div>
             </div>
+
             <div class="assignment-cards">
+
+            <div class="assignment-cards" data-project="Project 11 Login Page/login-form.html" role="link" tabindex="0" aria-label="Open assignment project">
+
                 <div class="assignment-top t5"></div>
                 <div class="assignment-bottom">
                     <h4>Login Form Layout</h4>
@@ -517,6 +558,23 @@
         </div>
     </section>
 
+
+
+    <script>
+        // Make each assignment card open its matching project.
+        document.querySelectorAll('.assignment-cards[data-project]').forEach(card => {
+            const openProject = () => { window.location.href = card.dataset.project; };
+            card.addEventListener('click', openProject);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openProject();
+                }
+            });
+        });
+    </script>
+
+>>>>>>> 7049a44 (Update files)
 </body>
 
 </html>

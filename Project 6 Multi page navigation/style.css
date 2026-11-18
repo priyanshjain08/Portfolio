@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box{
+    min-height: 100vh;          /* covers the whole screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* page backgrounds */
+body.home       .box{ background: linear-gradient(45deg, red, orange); }
+body.about      .box{ background: linear-gradient(45deg, rgb(79,129,80), rgb(40,74,166)); }
+body.project    .box{ background: linear-gradient(45deg, rgb(119,23,126), rgb(19,13,93)); }
+body.acheivment .box{ background: linear-gradient(45deg, rgb(176,237,24), rgb(6,52,126)); }
+body.contact    .box{ background: linear-gradient(45deg, rgb(27,232,232), rgb(21,218,182)); }
+
+/* navigation (same on every page) */
+ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    padding: 15px 0;
+    background: bisque;
+    border-radius: 30px;
+}
+
+a{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-size: 20px;
+    padding: 4px 8px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+a:hover{
+    color: #c0392b;
+    transform: scale(1.2);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+a.active{
+    font-weight: bold;
+}

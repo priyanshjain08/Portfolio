@@ -1355,3 +1355,8 @@ body.booting>section *::after {
         stroke-dashoffset: 1;
     }
 }
+
+/* Assignment cards are interactive links to their individual projects. */
+.assignment-cards[data-project] { cursor: pointer; }
+.assignment-cards[data-project]:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 4px; }
+

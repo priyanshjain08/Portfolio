@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+
+    <style>
+
+        /* =========================
+           MAIN CONTAINER
+           ========================= */
+
+        .con {
+            min-height: 900px;
+            background: #3f3f3e31;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 70px;
+
+            box-sizing: border-box;
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+
+
+        /* =========================
+           SIX SMALL BOXES
+           ========================= */
+
+        .section-title {
+            margin: 0;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .box-title {
+            margin: 0;
+            color: black;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .top-section,
+        .big-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .top-section {
+            gap: 45px;
+        }
+
+        .top-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .square {
+            height: 100px;
+            width: 100px;
+
+            border: 1px solid black;
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+
+        /* =========================
+           BOX 1 - COLOUR
+           ========================= */
+
+        .s1 {
+            background: #d17272;
+            animation-name: colour;
+        }
+
+        @keyframes colour {
+            from {
+                background-color: #d17272;
+            }
+
+            to {
+                background-color: aquamarine;
+            }
+        }
+
+
+        /* =========================
+           BOX 2 - MOVE
+           ========================= */
+
+        .s2 {
+            background-color: cadetblue;
+            animation-name: move;
+        }
+
+        @keyframes move {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            50% {
+                transform: translate(0, 50px);
+            }
+        }
+
+
+        /* =========================
+           BOX 3 - ROTATE
+           ========================= */
+
+        .s3 {
+            animation-name: rotate;
+            background-color: #91bce2;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           BOX 4 - PULSE
+           ========================= */
+
+        .s4 {
+            animation-name: pulse;
+            background-color: #ce95bc;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+
+        /* =========================
+           BOX 5 - FADE
+           ========================= */
+
+        .s5 {
+            animation-name: fade;
+            background-color: #33a081;
+        }
+
+        @keyframes fade {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           BOX 6 - BUFFER
+           ========================= */ 
+
+        .s6 {
+            border: 10px solid white;
+            border-top: 10px solid rgb(49, 49, 65);
+            border-radius: 50%;
+
+            animation-name: buffer;
+        }
+
+        @keyframes buffer {
+
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           BIG BOXES CONTAINER
+           ========================= */
+
+        .big-box {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+
+        /* =========================
+           TWO BIG BOXES
+           ========================= */
+
+        .animation-box {
+            width: 500px;
+            height: 320px;
+
+            border: 1px solid black;
+
+            position: relative;
+        }
+
+
+        /* =========================
+           BIG BOX 1
+           MOVING SQUARE
+           ========================= */
+
+        .moving-square {
+            width: 70px;
+            height: 70px;
+
+            background: rgb(112, 59, 130);
+
+            position: absolute;
+
+            animation: borderMove 4s linear infinite;
+        }
+
+        @keyframes borderMove {
+
+            0% {
+                left: 0;
+                top: 0;
+            }
+
+            25% {
+                left: calc(100% - 70px);
+                top: 0;
+            }
+
+            50% {
+                left: calc(100% - 70px);
+                top: calc(100% - 70px);
+            }
+
+            75% {
+                left: 0;
+                top: calc(100% - 70px);
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+            }
+        }
+
+
+        /* =========================
+           BIG BOX 2
+           FIVE BALLS
+           ========================= */
+
+        .voice-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ball {
+            width: 35px;
+            height: 35px;
+            /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+
+            background: rgb(51, 87, 177);
+            border-radius: 50%;
+
+            animation: voice 2s ease-in-out infinite;
+        }
+
+
+        /* =========================
+           BALL ANIMATION DELAYS
+           ========================= */
+
+        .ball:nth-child(1) {
+            animation-delay: 0s;
+            background-color: #435df0;
+        }
+
+        .ball:nth-child(2) {
+            animation-delay: 0.15s;
+            background-color: #f04343;
+        }
+
+        .ball:nth-child(3) {
+            animation-delay: 0.30s;
+            background-color: rgb(238, 238, 29);
+        }
+
+        .ball:nth-child(4) {
+            animation-delay: 0.45s;
+            background-color: rgb(12, 145, 12);
+        }
+
+        .ball:nth-child(5) {
+            animation-delay: 0.60s;
+        }
+
+
+        /* =========================
+           VOICE ANIMATION
+           ========================= */
+
+        @keyframes voice {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-60px);
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="con">
+
+        <!-- =========================
+             SIX SMALL BOXES
+             ========================= -->
+
+        <div class="top-section">
+            <h1 class="section-title">CSS Animation Examples</h1>
+            <div class="top-boxes">
+
+            <div class="square s1">
+                colour
+            </div>
+
+            <div class="square s2">
+                move
+            </div>
+
+            <div class="square s3">
+                rotate
+            </div>
+
+            <div class="square s4">
+                pulse
+            </div>
+
+            <div class="square s5">
+                fade
+            </div>
+
+            <div class="square s6">
+                buffer
+            </div>
+
+            </div>
+        </div>
+
+
+        <!-- =========================
+             TWO BIG BOXES
+             ========================= -->
+
+        <div class="big-section">
+            <div class="big-box">
+
+            <!-- BIG BOX 1 -->
+            <div>
+                <h2 class="box-title">Square Path Animation</h2>
+                <div class="animation-box">
+
+                <div class="moving-square"></div>
+                </div>
+            </div>
+
+
+            <!-- BIG BOX 2 -->
+            <div>
+                <h2 class="box-title">Google Voice Assistant</h2>
+                <div class="animation-box voice-box">
+
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+

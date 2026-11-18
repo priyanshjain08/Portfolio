@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goverment layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        /* Whole page = one screen tall, stacked vertically */
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 6px 0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .header,
+        .footer {
+            flex: 0 0 15%;
+            background-color: #111827;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0;
+            text-align: center;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        /* Main takes whatever space is left */
+        .main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            background-color: #ffffff;
+        }
+
+        .left {
+            width: 20%;
+            background-color: #374151;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .right {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(209, 206, 206);
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .top {
+            flex: 1;
+            background-color: #172c5a;
+            text-align: center;
+        }
+
+        .bottom {
+            flex: 1;
+            background-color: rgb(34, 34, 82);
+            display: flex;
+        }
+
+        .b1 {
+            width: 50%;
+            background-color: #162030;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .b2 {
+            width: 50%;
+            background-color: #1f2937;
+            font-size: 24px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Flexbox</h1>
+    <div class="header">
+        <h2>Header</h2>
+    </div>
+    <div class="main">
+        <div class="left">Left</div>
+        <div class="right">
+            <div class="top">Right-Top</div>
+            <div class="bottom">
+                <div class="b1">Bottom 1</div>
+                <div class="b2">Bottom 2</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Footer</div>
+</body>
+
+</html>

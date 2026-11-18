@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .outerbox {
+            width: 700px;
+            height: 500px;
+            border: 50px solid teal;
+            padding: 70px;
+            box-sizing: border-box;
+            margin: auto;
+            background-color: skyblue;
+        }
+
+        .middlebox {
+            width: 100%;
+            height: 100%;
+            border: 15px solid navy;
+            padding: 60px;
+            box-sizing: border-box;
+            background-color: blue;
+
+        }
+
+        .innerbox {
+            width: 100%;
+            height: 100%;
+            border: 1px solid yellow;
+            background-color: orange;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .m,
+        .p,
+        .p1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+
+        .m {
+            top: 120px;
+        }
+
+        .p1 {
+            top: 179px;
+            color: white;
+        }
+
+        .p {
+            top: 210px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align=" center">Box Plotting</h1>
+    <div class="outerbox">
+        <p class="m">Margin</p>
+        <div class="middlebox">
+            <p class="p1">Border</p>
+            <p class="p">padding</p>
+            <div class="innerbox">
+                <h2> Content</h2>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
