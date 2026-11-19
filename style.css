@@ -215,6 +215,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    text-decoration: none !important;
     animation: fadeUp .8s var(--ease) 1.35s backwards;
 }
 
@@ -235,6 +236,7 @@ header {
 .button a:first-child {
     background: var(--ink);
     color: #fff;
+    text-decoration: none !important;
 }
 
 .button a:first-child:hover {
@@ -247,6 +249,7 @@ header {
 .button a:last-child {
     background: transparent;
     color: var(--ink);
+    text-decoration: none !important;
 }
 
 .button a:last-child:hover {
