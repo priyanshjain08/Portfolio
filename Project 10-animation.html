@@ -2,430 +2,422 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation</title>
-
-    <style>
-
-        /* =========================
-           MAIN CONTAINER
-           ========================= */
-
-        .con {
-            min-height: 900px;
-            background: #3f3f3e31;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            gap: 70px;
-
-            box-sizing: border-box;
-            padding-top: 40px;
-            padding-bottom: 50px;
-        }
-
-
-        /* =========================
-           SIX SMALL BOXES
-           ========================= */
-
-        .section-title {
-            margin: 0;
-            color: black;
-            text-align: center;
-            font-size: 28px;
-        }
-
-        .box-title {
-            margin: 0;
-            color: black;
-            text-align: center;
-            font-size: 22px;
-        }
-
-        .top-section,
-        .big-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .top-section {
-            gap: 45px;
-        }
-
-        .top-boxes {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .square {
-            height: 100px;
-            width: 100px;
-
-            border: 1px solid black;
-            border-radius: 20px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-        }
-
-
-        /* =========================
-           BOX 1 - COLOUR
-           ========================= */
-
-        .s1 {
-            background: #d17272;
-            animation-name: colour;
-        }
-
-        @keyframes colour {
-            from {
-                background-color: #d17272;
-            }
-
-            to {
-                background-color: aquamarine;
-            }
-        }
-
-
-        /* =========================
-           BOX 2 - MOVE
-           ========================= */
-
-        .s2 {
-            background-color: cadetblue;
-            animation-name: move;
-        }
-
-        @keyframes move {
-
-            0%,
-            100% {
-                transform: translate(0);
-            }
-
-            50% {
-                transform: translate(0, 50px);
-            }
-        }
-
-
-        /* =========================
-           BOX 3 - ROTATE
-           ========================= */
-
-        .s3 {
-            animation-name: rotate;
-            background-color: #91bce2;
-        }
-
-        @keyframes rotate {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-
-        /* =========================
-           BOX 4 - PULSE
-           ========================= */
-
-        .s4 {
-            animation-name: pulse;
-            background-color: #ce95bc;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.5);
-            }
-        }
-
-
-        /* =========================
-           BOX 5 - FADE
-           ========================= */
-
-        .s5 {
-            animation-name: fade;
-            background-color: #33a081;
-        }
-
-        @keyframes fade {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =========================
-           BOX 6 - BUFFER
-           ========================= */ 
-
-        .s6 {
-            border: 10px solid white;
-            border-top: 10px solid rgb(49, 49, 65);
-            border-radius: 50%;
-
-            animation-name: buffer;
-        }
-
-        @keyframes buffer {
-
-            0% {
-                transform: rotate(0);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-
-        /* =========================
-           BIG BOXES CONTAINER
-           ========================= */
-
-        .big-box {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-
-        /* =========================
-           TWO BIG BOXES
-           ========================= */
-
-        .animation-box {
-            width: 500px;
-            height: 320px;
-
-            border: 1px solid black;
-
-            position: relative;
-        }
-
-
-        /* =========================
-           BIG BOX 1
-           MOVING SQUARE
-           ========================= */
-
-        .moving-square {
-            width: 70px;
-            height: 70px;
-
-            background: rgb(112, 59, 130);
-
-            position: absolute;
-
-            animation: borderMove 4s linear infinite;
-        }
-
-        @keyframes borderMove {
-
-            0% {
-                left: 0;
-                top: 0;
-            }
-
-            25% {
-                left: calc(100% - 70px);
-                top: 0;
-            }
-
-            50% {
-                left: calc(100% - 70px);
-                top: calc(100% - 70px);
-            }
-
-            75% {
-                left: 0;
-                top: calc(100% - 70px);
-            }
-
-            100% {
-                left: 0;
-                top: 0;
-            }
-        }
-
-
-        /* =========================
-           BIG BOX 2
-           FIVE BALLS
-           ========================= */
-
-        .voice-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .ball {
-            width: 35px;
-            height: 35px;
-            /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
-
-            background: rgb(51, 87, 177);
-            border-radius: 50%;
-
-            animation: voice 2s ease-in-out infinite;
-        }
-
-
-        /* =========================
-           BALL ANIMATION DELAYS
-           ========================= */
-
-        .ball:nth-child(1) {
-            animation-delay: 0s;
-            background-color: #435df0;
-        }
-
-        .ball:nth-child(2) {
-            animation-delay: 0.15s;
-            background-color: #f04343;
-        }
-
-        .ball:nth-child(3) {
-            animation-delay: 0.30s;
-            background-color: rgb(238, 238, 29);
-        }
-
-        .ball:nth-child(4) {
-            animation-delay: 0.45s;
-            background-color: rgb(12, 145, 12);
-        }
-
-        .ball:nth-child(5) {
-            animation-delay: 0.60s;
-        }
-
-
-        /* =========================
-           VOICE ANIMATION
-           ========================= */
-
-        @keyframes voice {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-60px);
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CSS Animation Examples</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0e1020;
+      --bg2: #1b1440;
+      --card: rgba(255, 255, 255, .06);
+      --line: rgba(255, 255, 255, .14);
+      --text: #f1f2fa;
+      --muted: #a3a7c4;
+      --coral: #ff6b81;
+      --mint: #5eead4;
+      --sky: #60a5fa;
+      --violet: #a78bfa;
+      --pink: #f472b6;
+      --lime: #a3e635;
+      --amber: #fbbf24;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 15% -10%, #3b2a8f55, transparent 60%),
+        radial-gradient(800px 500px at 95% 110%, #0f766e44, transparent 60%),
+        linear-gradient(160deg, var(--bg), var(--bg2));
+      background-attachment: fixed;
+    }
+
+    .con {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 56px 24px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      letter-spacing: -.02em;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 60px);
+      text-align: center;
+      background: linear-gradient(90deg, var(--coral), var(--amber), var(--mint), var(--sky), var(--violet));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% 0;
+      }
+    }
+
+    .sub {
+      text-align: center;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    /* ---------- small boxes ---------- */
+    .top-boxes {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 22px;
+    }
+
+    .cell {
+      height: 220px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .cell:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, .35);
+    }
+
+    .cell span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .square {
+      height: 80px;
+      width: 80px;
+      border-radius: 20px;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    .s1 {
+      background: var(--coral);
+      box-shadow: 0 0 28px #ff6b8180;
+      animation-name: colour;
+      animation-direction: alternate;
+    }
+
+    @keyframes colour {
+      from {
+        background-color: var(--coral);
+        box-shadow: 0 0 28px #ff6b8180;
+      }
+
+      to {
+        background-color: var(--mint);
+        box-shadow: 0 0 28px #5eead480;
+      }
+    }
+
+    .s2 {
+      background: var(--sky);
+      box-shadow: 0 0 28px #60a5fa80;
+      animation-name: move;
+    }
+
+    @keyframes move {
+
+      0%,
+      100% {
+        transform: translateY(-22px);
+      }
+
+      50% {
+        transform: translateY(22px);
+      }
+    }
+
+    .s3 {
+      background: var(--violet);
+      box-shadow: 0 0 28px #a78bfa80;
+      animation-name: rotate;
+      animation-timing-function: cubic-bezier(.6, 0, .3, 1);
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .s4 {
+      background: var(--pink);
+      box-shadow: 0 0 28px #f472b680;
+      animation-name: pulse;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(.85);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    .s5 {
+      background: var(--lime);
+      box-shadow: 0 0 28px #a3e63580;
+      animation-name: fade;
+    }
+
+    @keyframes fade {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .1;
+      }
+    }
+
+    .s6 {
+      width: 64px;
+      height: 64px;
+      background: transparent;
+      border: 7px solid rgba(255, 255, 255, .15);
+      border-top-color: var(--amber);
+      border-radius: 50%;
+      animation-name: buffer;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+    }
+
+    @keyframes buffer {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ---------- big boxes ---------- */
+    .big-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .panel h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .animation-box {
+      width: 100%;
+      height: 320px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* square path */
+    .path-box::before {
+      content: "";
+      position: absolute;
+      inset: 35px;
+      border: 1px dashed rgba(255, 255, 255, .18);
+      border-radius: 12px;
+    }
+
+    .moving-square {
+      --s: 70px;
+      --pad: 0px;
+      width: var(--s);
+      height: var(--s);
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--violet), var(--pink));
+      box-shadow: 0 0 36px #a78bfa99;
+      position: absolute;
+      animation: borderMove 5s linear infinite;
+    }
+
+    @keyframes borderMove {
+      0% {
+        left: 0;
+        top: 0;
+        transform: rotate(0);
+      }
+
+      25% {
+        left: calc(100% - 70px);
+        top: 0;
+        transform: rotate(90deg);
+      }
+
+      50% {
+        left: calc(100% - 70px);
+        top: calc(100% - 70px);
+        transform: rotate(180deg);
+      }
+
+      75% {
+        left: 0;
+        top: calc(100% - 70px);
+        transform: rotate(270deg);
+      }
+
+      100% {
+        left: 0;
+        top: 0;
+        transform: rotate(360deg);
+      }
+    }
+
+    /* voice balls */
+    .voice-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 3vw, 22px);
+    }
+
+    .ball {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      animation: voice 1.6s ease-in-out infinite;
+      box-shadow: 0 0 22px currentColor;
+    }
+
+    .ball:nth-child(1) {
+      color: #4285f4;
+      background: #4285f4;
+      animation-delay: 0s;
+    }
+
+    .ball:nth-child(2) {
+      color: #ea4335;
+      background: #ea4335;
+      animation-delay: .15s;
+    }
+
+    .ball:nth-child(3) {
+      color: #fbbc05;
+      background: #fbbc05;
+      animation-delay: .30s;
+    }
+
+    .ball:nth-child(4) {
+      color: #34a853;
+      background: #34a853;
+      animation-delay: .45s;
+    }
+
+    .ball:nth-child(5) {
+      color: #4285f4;
+      background: #4285f4;
+      animation-delay: .60s;
+    }
+
+    @keyframes voice {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-60px) scale(1.15);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 12s !important;
+      }
+    }
+  </style>
 </head>
 
-
 <body>
+  <div class="con">
 
-    <div class="con">
-
-        <!-- =========================
-             SIX SMALL BOXES
-             ========================= -->
-
-        <div class="top-section">
-            <h1 class="section-title">CSS Animation Examples</h1>
-            <div class="top-boxes">
-
-            <div class="square s1">
-                colour
-            </div>
-
-            <div class="square s2">
-                move
-            </div>
-
-            <div class="square s3">
-                rotate
-            </div>
-
-            <div class="square s4">
-                pulse
-            </div>
-
-            <div class="square s5">
-                fade
-            </div>
-
-            <div class="square s6">
-                buffer
-            </div>
-
-            </div>
+    <header>
+      <h1>CSS Animation Examples</h1>
+      <p class="sub">Eight small experiments, built with nothing but keyframes.</p>
+      <div class="top-boxes">
+        <div class="cell">
+          <div class="square s1"></div><span>colour</span>
         </div>
-
-
-        <!-- =========================
-             TWO BIG BOXES
-             ========================= -->
-
-        <div class="big-section">
-            <div class="big-box">
-
-            <!-- BIG BOX 1 -->
-            <div>
-                <h2 class="box-title">Square Path Animation</h2>
-                <div class="animation-box">
-
-                <div class="moving-square"></div>
-                </div>
-            </div>
-
-
-            <!-- BIG BOX 2 -->
-            <div>
-                <h2 class="box-title">Google Voice Assistant</h2>
-                <div class="animation-box voice-box">
-
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-
-                </div>
-            </div>
-
-            </div>
+        <div class="cell">
+          <div class="square s2"></div><span>move</span>
         </div>
+        <div class="cell">
+          <div class="square s3"></div><span>rotate</span>
+        </div>
+        <div class="cell">
+          <div class="square s4"></div><span>pulse</span>
+        </div>
+        <div class="cell">
+          <div class="square s5"></div><span>fade</span>
+        </div>
+        <div class="cell">
+          <div class="square s6"></div><span>buffer</span>
+        </div>
+      </div>
+    </header>
 
-    </div>
+    <section class="big-box">
+      <div class="panel">
+        <h2>Square Path Animation</h2>
+        <div class="animation-box path-box">
+          <div class="moving-square"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Google Voice Assistant</h2>
+        <div class="animation-box voice-box">
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+        </div>
+      </div>
+    </section>
 
+  </div>
 </body>
 
 </html>
-
