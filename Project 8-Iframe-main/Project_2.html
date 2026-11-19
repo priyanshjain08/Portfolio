@@ -1,118 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newspaper</title>
-    <style>
-        h1,
-        h2 {
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Times of India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f6f5f1;
+  --ink: #16161a;
+  --muted: #5d5d66;
+  --rule: #c9c7bf;
+  --red: #c4161c;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #17181b; --ink: #ecebe6; --muted: #a2a2aa; --rule: #3a3b40; --red: #ff6b6f; }
+}
+:root[data-theme="dark"] { --paper: #17181b; --ink: #ecebe6; --muted: #a2a2aa; --rule: #3a3b40; --red: #ff6b6f; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif; font-size: 17px; line-height: 1.6;
+}
+.page { max-width: 1120px; margin: 0 auto; padding: 24px 20px 72px; }
 
-        .three {
-            column-count: 3;
-            column-rule: 3px solid black;
-        }
+/* Masthead */
+.masthead { text-align: center; border-bottom: 4px double var(--ink); padding-bottom: 14px; }
+.masthead h1 {
+  margin: 0; font-family: "Old Standard TT", Georgia, serif; font-weight: 700;
+  font-size: clamp(40px, 9vw, 96px); line-height: 1; letter-spacing: -.01em;
+}
+.dateline { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
 
-        body {
-            background-color: bisque;
-        }
+/* Ticker (replaces <marquee>) */
+.ticker { overflow: hidden; border-bottom: 1px solid var(--rule); background: var(--red); color: #fff; white-space: nowrap; }
+.ticker span { display: inline-block; padding: 8px 0 8px 100%; font-weight: 600; animation: scroll 22s linear infinite; }
+.ticker:hover span { animation-play-state: paused; }
+@keyframes scroll { to { transform: translateX(-100%); } }
 
-        marquee {
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
+/* Lead story */
+.lead { padding: 36px 0 32px; border-bottom: 1px solid var(--ink); }
+.lead h2 {
+  margin: 0 0 12px; max-width: 24ch; font-family: "Old Standard TT", Georgia, serif;
+  font-size: clamp(30px, 5.5vw, 58px); line-height: 1.08; font-weight: 700; letter-spacing: -.01em;
+}
+.lead .deck { margin: 0 0 24px; font-size: clamp(18px, 2.2vw, 22px); font-style: italic; color: var(--muted); max-width: 52ch; }
+.lead .body { column-width: 280px; column-gap: 40px; column-rule: 1px solid var(--rule); }
+.lead .body p { margin: 0 0 1em; }
+.lead .body p:first-child::first-letter {
+  float: left; font-family: "Old Standard TT", Georgia, serif; font-size: 4.2em; line-height: .8;
+  padding: .06em .1em 0 0; color: var(--red); font-weight: 700;
+}
 
-        }
-        .h2{
-            text-align: center;
-        }
-        
-    </style>
+/* Sections */
+.section { padding: 28px 0 8px; }
+.section > h2 {
+  margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+  font-family: "Old Standard TT", Georgia, serif; font-size: clamp(22px, 3.2vw, 30px); line-height: 1.2; font-weight: 700;
+}
+.cols { column-width: 260px; column-gap: 40px; column-rule: 1px solid var(--rule); }
+article { break-inside: avoid; margin-bottom: 28px; }
+.tag { display: block; margin-bottom: 4px; color: var(--red); font-weight: 700; font-size: 14px; }
+article h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.25; font-weight: 700; }
+article h3:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+article p { margin: 0; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { .ticker span { animation: none; padding-left: 12px; } }
+</style>
 </head>
-
 <body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="dateline"><span>29 July 2026</span><span>Morning edition</span></div>
     <h1>Times of India</h1>
-    <marquee behavior="" direction="">
-        <h2>Latest updated news date: 29 July 2026</h2>
-    </marquee>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, dolor.</h1>
-    <div class="three">
-        <h3 >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, atque.
-        </h3>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, minima est sequi, ullam voluptas sit
-            ipsum pariatur
-            temporibus quod mollitia voluptatem labore, explicabo a quaerat.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, optio!
-        </p>
+  </header>
+  <div class="ticker" role="marquee"><span>Latest updated news date: 29 July 2026</span></div>
 
+  <section class="lead">
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, dolor.</h2>
+    <p class="deck">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, atque.</p>
+    <div class="body">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, minima est sequi, ullam voluptas sit ipsum pariatur temporibus quod mollitia voluptatem labore, explicabo a quaerat.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, optio!</p>
     </div>
+  </section>
 
-    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae velit repellendus a illo in,
-        eligendi aspernatur dolorem mollitia praesentium?</h2>
+  <section class="section">
+    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae velit repellendus a illo in, eligendi aspernatur dolorem mollitia praesentium?</h2>
+    <div class="cols" id="a"></div>
+  </section>
 
-    <div class="three">
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
+  <section class="section">
+    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae velit repellendus a illo in, eligendi aspernatur dolorem mollitia praesentium?</h2>
+    <div class="cols" id="b"></div>
+  </section>
 
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
+</div>
 
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-
-    </div>
-    </div>
-
-    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae velit repellendus a illo in,
-        eligendi aspernatur dolorem mollitia praesentium?</h2>
-
-    <div class="three">
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-        <h4>HEADLINE</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore,
-            asperiores optio consectetur quaerat libero et odit.</p>
-
-
-    </div>
+<script>
+const text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti vitae aperiam dolore, asperiores optio consectetur quaerat libero et odit.";
+const fill = (id, tags) => document.getElementById(id).innerHTML = tags.map(t =>
+  `<article><span class="tag">${t}</span><h3>Headline</h3><p>${text}</p></article>`).join("");
+fill("a", ["Nation", "Business", "Sports", "City", "Technology", "Culture"]);
+fill("b", ["World", "Opinion", "Science", "Health", "Travel", "Education"]);
+</script>
 </body>
-
 </html>

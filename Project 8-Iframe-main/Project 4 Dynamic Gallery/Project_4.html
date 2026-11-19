@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Dynamic Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #121316;
+            --tile: #1c1e23;
+            --text: #f1efe9;
+            --muted: #9a9ca5;
+            --line: rgba(255, 255, 255, .14);
+            --accent: #ffb86b;
+            --gap: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", system-ui, sans-serif;
+            padding: calc(env(safe-area-inset-top, 0px) + 40px) 20px calc(env(safe-area-inset-bottom, 0px) + 56px);
+        }
+
+        .wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-family: "Instrument Serif", Georgia, serif;
+            font-weight: 400;
+            font-size: clamp(44px, 8vw, 88px);
+            line-height: 1;
+            letter-spacing: -.02em;
+        }
+
+        .meta {
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        .shuffle {
+            font: inherit;
+            font-weight: 500;
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 11px 22px;
+            cursor: pointer;
+            transition: background .2s, border-color .2s, color .2s;
+        }
+
+        .shuffle:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #1a1208;
+        }
+
+        /* Masonry: columns appear and disappear with the screen width */
+        .grid {
+            column-width: 260px;
+            column-gap: var(--gap);
+        }
+
+        .tile {
+            display: block;
+            width: 100%;
+            margin-bottom: var(--gap);
+            break-inside: avoid;
+            position: relative;
+            overflow: hidden;
+            border: 0;
+            border-radius: 16px;
+            background: var(--tile);
+            cursor: zoom-in;
+        }
+
+        .tile img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transform: scale(1.04);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .tile img.in {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .tile:hover img.in {
+            transform: scale(1.07);
+        }
+
+        .tile::after {
+            content: attr(data-n);
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            font-size: 13px;
+            background: rgba(18, 19, 22, .72);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity .25s, transform .25s;
+        }
+
+        .tile:hover::after,
+        .tile:focus-visible::after {
+            opacity: 1;
+            transform: none;
+        }
+
+        .tile:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Lightbox */
+        .lb {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(8, 8, 10, .92);
+            padding: 56px 16px;
+        }
+
+        .lb.open {
+            display: flex;
+        }
+
+        .lb img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        .lb button {
+            position: absolute;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            font-size: 22px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .lb button:hover {
+            background: rgba(255, 255, 255, .2);
+        }
+
+        .lb .close {
+            top: calc(env(safe-area-inset-top, 0px) + 12px);
+            right: 12px;
+        }
+
+        .lb .prev {
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lb .next {
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lb .count {
+            position: absolute;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+
+            .lb .prev,
+            .lb .next {
+                top: auto;
+                bottom: calc(env(safe-area-inset-bottom, 0px) + 6px);
+                transform: none;
+            }
+
+            .lb .prev {
+                left: 20px;
+            }
+
+            .lb .next {
+                right: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <div>
+                <h1>Dynamic Gallery</h1>
+                <p class="meta" id="meta"></p>
+            </div>
+            <button class="shuffle" id="shuffle" type="button">Shuffle</button>
+        </header>
+        <main class="grid" id="grid"></main>
+    </div>
+
+    <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="close" id="close" aria-label="Close">✕</button>
+        <button class="prev" id="prev" aria-label="Previous photo">‹</button>
+        <img id="lbImg" alt="">
+        <button class="next" id="next" aria-label="Next photo">›</button>
+        <div class="count" id="count"></div>
+    </div>
+
+    <script>
+        /* Your image files. Add or remove names here and the gallery updates itself. */
+        const files = ["Screenshot 2026-11-19 202847.png", "Screenshot 2026-11-19 203002.png", "Screenshot 2026-11-19 203035.png", "Screenshot 2026-11-19 203156.png", "Screenshot 2026-11-19 203812.png"];
+        /* Which file goes in each slot (same 16 slots as your original layout). */
+        const order = [0, 1, 0, 3, 3, 1, 2, 0, 1, 0, 0, 2, 2, 0, 3, 0];
+
+        /* If a file can’t be found, a coloured placeholder is shown instead. */
+        const heights = [700, 500, 800, 600, 900];
+        function placeholder(i) {
+            const h = heights[i % heights.length], hue = (i * 47) % 360;
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="${h}"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${hue},60%,62%)"/><stop offset="1" stop-color="hsl(${(hue + 50) % 360},55%,38%)"/></linearGradient></defs><rect width="600" height="${h}" fill="url(#g)"/></svg>`;
+            return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+        }
+
+        let items = order.map((f, i) => ({ id: i, src: files[f] }));
+        const grid = document.getElementById("grid");
+        const lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), count = document.getElementById("count");
+        let cur = 0, lastTile = null;
+
+        function render() {
+            grid.innerHTML = "";
+            items.forEach((it, pos) => {
+                const b = document.createElement("button");
+                b.className = "tile"; b.type = "button";
+                b.dataset.n = "Photo " + (it.id + 1);
+                b.setAttribute("aria-label", "Open photo " + (it.id + 1));
+                const img = new Image();
+                img.alt = "Photo " + (it.id + 1);
+                img.loading = "lazy";
+                img.onload = () => img.classList.add("in");
+                img.onerror = () => { img.onerror = null; img.src = placeholder(it.id); };
+                img.src = it.src;
+                b.appendChild(img);
+                b.addEventListener("click", () => open(pos, b));
+                grid.appendChild(b);
+            });
+            document.getElementById("meta").textContent = items.length + " photos";
+        }
+
+        function show() {
+            const img = grid.children[cur].querySelector("img");
+            lbImg.src = img.currentSrc || img.src;
+            lbImg.alt = img.alt;
+            count.textContent = (cur + 1) + " / " + items.length;
+        }
+        function open(pos, tile) { cur = pos; lastTile = tile; show(); lb.classList.add("open"); document.getElementById("close").focus(); document.body.style.overflow = "hidden"; }
+        function close() { lb.classList.remove("open"); document.body.style.overflow = ""; if (lastTile) lastTile.focus(); }
+        function step(d) { cur = (cur + d + items.length) % items.length; show(); }
+
+        document.getElementById("close").onclick = close;
+        document.getElementById("prev").onclick = () => step(-1);
+        document.getElementById("next").onclick = () => step(1);
+        lb.addEventListener("click", e => { if (e.target === lb) close(); });
+        document.addEventListener("keydown", e => {
+            if (!lb.classList.contains("open")) return;
+            if (e.key === "Escape") close();
+            if (e.key === "ArrowLeft") step(-1);
+            if (e.key === "ArrowRight") step(1);
+        });
+        let x0 = 0;
+        lb.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener("touchend", e => { const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
+
+        document.getElementById("shuffle").onclick = () => {
+            for (let i = items.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[items[i], items[j]] = [items[j], items[i]]; }
+            render();
+        };
+        render();
+    </script>
+</body>
+
+</html>

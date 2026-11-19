@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Under a Sky Full of Stars</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background-color: beige;
+            background-image: url("Background.PNG");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            font-family: Cambria, Cochin, Georgia,
+                Times, 'Times New Roman', serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: whitesmoke;
+
+            font-size: clamp(32px, 6vw, 65px);
+
+            text-align: center;
+
+            padding: 20px 15px;
+
+            background-color: rgba(20, 20, 35, 0.55);
+
+            border-radius: 10px;
+        }
+
+        .content p {
+            color: whitesmoke;
+
+            line-height: 1.6;
+
+            font-size: clamp(16px, 2.5vw, 25px);
+
+            text-align: center;
+
+            padding: 15px;
+
+            background-color: rgba(20, 20, 35, 0.55);
+
+            border-radius: 10px;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 768px) {
+
+            body {
+                padding: 20px;
+                background-attachment: scroll;
+            }
+
+            .content h1 {
+                font-size: clamp(30px, 7vw, 48px);
+            }
+
+            .content p {
+                font-size: clamp(16px, 3vw, 21px);
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 15px;
+                background-position: center;
+            }
+
+            .content h1 {
+                font-size: 32px;
+                padding: 18px 10px;
+                line-height: 1.2;
+            }
+
+            .content p {
+                font-size: 17px;
+                padding: 12px 10px;
+                line-height: 1.5;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <h1>
+            Under a Sky Full of Stars
+        </h1>
+
+        <p>
+            Where the mountains fall silent, the night comes alive.
+        </p>
+
+    </div>
+
+</body>
+
+</html>
