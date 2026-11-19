@@ -1,15 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I-Frame</title>
+
+    <title>Responsive I-Frame Projects</title>
+
     <style>
+
         * {
             box-sizing: border-box;
-            margin: 0%;
-            padding: 0%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
@@ -17,82 +21,277 @@
             background: #0b1220;
             color: white;
             min-height: 100vh;
-            padding: 30px;
+            padding: 20px;
         }
+
+        /* MAIN CONTAINER */
 
         .container {
             width: 100%;
-            min-height: calc(100vh - 60px);
-            display: flex;
+            min-height: calc(100vh - 40px);
 
+            display: flex;
+            gap: 15px;
         }
+
+        /* SIDEBAR */
 
         .sidebar {
             width: 250px;
-            padding: 35px 20px;
+            flex-shrink: 0;
+
+            padding: 25px 15px;
+
             border-right: 1px solid #26344d;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 22px;
+            gap: 18px;
+        }
+
+        .sidebar h2 {
+            font-size: 23px;
+            color: #8bb8ff;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .sidebar a {
             width: 100%;
             padding: 14px 10px;
+
             text-align: center;
             text-decoration: none;
+
             color: white;
             background: #102a52;
-            border: 1px solid black;
-            font-size: 16px;
-            transition: 0.2s;
+
+            border: 1px solid #26344d;
             border-radius: 30px;
 
+            font-size: 16px;
+
+            transition: 0.3s ease;
         }
 
         .sidebar a:hover {
             background: #163b79;
             border-color: #3d6eaa;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
+
+        .sidebar a:focus-visible {
+            outline: 2px solid #8bb8ff;
+            outline-offset: 3px;
+        }
+
+        /* MAIN CONTENT */
 
         .content {
             flex: 1;
-            min-height: calc(100vh - 60px);
+            min-width: 0;
+            min-height: calc(100vh - 40px);
         }
 
         .content iframe {
             width: 100%;
             height: 100%;
-            min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 40px);
+
             border: none;
+            border-radius: 10px;
+
             background: white;
+            display: block;
         }
+
+        /* TABLET RESPONSIVENESS */
+
+        @media screen and (max-width: 900px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                min-height: calc(100vh - 30px);
+                gap: 10px;
+            }
+
+            .sidebar {
+                width: 190px;
+                padding: 20px 10px;
+                gap: 14px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+                padding: 12px 8px;
+            }
+
+            .content {
+                min-height: calc(100vh - 30px);
+            }
+
+            .content iframe {
+                min-height: calc(100vh - 30px);
+            }
+
+        }
+
+        /* MOBILE RESPONSIVENESS */
+
+        @media screen and (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                flex-direction: column;
+                min-height: calc(100vh - 24px);
+                gap: 15px;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 15px 10px;
+
+                border-right: none;
+                border-bottom: 1px solid #26344d;
+
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .sidebar h2 {
+                grid-column: 1 / -1;
+                font-size: 21px;
+                margin-bottom: 5px;
+            }
+
+            .sidebar a {
+                width: 100%;
+                padding: 12px 5px;
+                font-size: 13px;
+            }
+
+            .content {
+                width: 100%;
+                min-height: 65vh;
+                flex: 1;
+            }
+
+            .content iframe {
+                width: 100%;
+                height: 75vh;
+                min-height: 500px;
+                border-radius: 8px;
+            }
+
+        }
+
+        /* VERY SMALL MOBILE SCREENS */
+
+        @media screen and (max-width: 350px) {
+
+            body {
+                padding: 8px;
+            }
+
+            .sidebar {
+                gap: 7px;
+                padding: 10px 5px;
+            }
+
+            .sidebar a {
+                font-size: 12px;
+                padding: 11px 4px;
+            }
+
+            .sidebar h2 {
+                font-size: 18px;
+            }
+
+            .content iframe {
+                min-height: 450px;
+            }
+
+        }
+
     </style>
+
 </head>
 
 <body>
+
     <div class="container">
+
+        <!-- SIDEBAR NAVIGATION -->
+
         <div class="sidebar">
-            <a href="Project 1 Background Image\Project_1.html" target="contentFrame">Project 1</a>
-            <a href="Project_2.html" target="contentFrame">Project 2</a>
 
-            <a href="Project_3.html" target="contentFrame">Project 3</a>
+            <h2>My Projects</h2>
 
-            <a href="Project 4 Dynamic Gallery\Project_4.html" target="contentFrame">Project 4</a>
-            <a href="Project_5.html" target="contentFrame">Project 5</a>
-            <a href="Project 6 Multi page navigation\Project_6.html" target="contentFrame">Project 6</a>
-              <a href="Project_7.html" target="contentFrame">Project 7</a> 
-               <a href="Project_9.html" target="contentFrame">Project 9</a>
+            <a href="Project 1/Project_1.html"
+                target="contentFrame">
+                Project 1
+            </a>
 
+            <a href="Project_2.html"
+                target="contentFrame">
+                Project 2
+            </a>
 
+            <a href="Project_3.html"
+                target="contentFrame">
+                Project 3
+            </a>
+
+            <a href="Project 4/Project_4.html"
+                target="contentFrame">
+                Project 4
+            </a>
+
+            <a href="Project_5.html"
+                target="contentFrame">
+                Project 5
+            </a>
+
+            <a href="Project 6/Project_6.html"
+                target="contentFrame">
+                Project 6
+            </a>
+
+            <a href="Project_7.html"
+                target="contentFrame">
+                Project 7
+            </a>
+
+            <a href="Project_9.html"
+                target="contentFrame">
+                Project 9
+            </a>
 
         </div>
+
+
+        <!-- IFRAME CONTENT -->
+
         <div class="content">
-            <iframe name="contentFrame" src="Assignment 1.html" title=""></iframe>
+
+            <iframe
+                name="contentFrame"
+                src="Assignment 1.html"
+                title="Project Preview">
+            </iframe>
+
         </div>
+
     </div>
+
 </body>
 
 </html>
