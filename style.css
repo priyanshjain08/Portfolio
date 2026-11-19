@@ -217,12 +217,8 @@ header {
     gap: 12px;
     animation: fadeUp .8s var(--ease) 1.35s backwards;
 }
-/* Remove underline from Hero Section buttons */
-.button button a {
-    text-decoration: none !important;
-    color: inherit;
-}
-.button button {
+
+.button a {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -231,33 +227,33 @@ header {
     padding: 14px 26px;
     border-radius: 999px;
     border: 2px solid var(--ink);
+    text-decoration: none !important;
+    color: inherit;
     transition: transform .25s var(--ease), background .25s, color .25s, box-shadow .25s;
 }
 
-/* !important only because the HTML has an inline colour on these buttons */
-.button button:first-child {
+.button a:first-child {
     background: var(--ink);
-    color: #fff !important;
+    color: #fff;
 }
 
-.button button:first-child:hover {
+.button a:first-child:hover {
     background: var(--cobalt);
     border-color: var(--cobalt);
     transform: translateY(-3px);
     box-shadow: 0 12px 24px -10px rgba(30, 64, 216, .6);
 }
 
-.button button:last-child {
+.button a:last-child {
     background: transparent;
-    color: var(--ink) !important;
+    color: var(--ink);
 }
 
-.button button:last-child:hover {
+.button a:last-child:hover {
     background: var(--marigold);
     border-color: var(--marigold);
     transform: translateY(-3px);
 }
-
 .icon {
     display: flex;
     gap: 10px;
