@@ -228,6 +228,7 @@ header {
     border-radius: 999px;
     border: 2px solid var(--ink);
     transition: transform .25s var(--ease), background .25s, color .25s, box-shadow .25s;
+   text-decoration:none;
 }
 
 /* !important only because the HTML has an inline colour on these buttons */
