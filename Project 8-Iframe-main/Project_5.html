@@ -5,14 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Responsive Profile Card</title>
+    <title>Profile Card</title>
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -20,115 +18,57 @@
         }
 
         body {
-            background: #ffffff;
-            font-family: Arial, sans-serif;
+            background: white;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
-        /* MAIN CONTAINER */
-
+        /* Main Container */
         .container {
-            width: 100%;
-            max-width: 1100px;
+            width: 90%;
+            max-width: 1200px;
             min-height: 100vh;
             margin: auto;
-
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(25px, 6vw, 80px);
+            gap: clamp(30px, 6vw, 80px);
+            padding: 40px 0;
         }
 
-        /* LEFT SIDE */
-
-        .box {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .left-bar {
-            width: 12px;
-            min-width: 12px;
-            height: 430px;
-            background: rgb(2, 2, 83);
-            border-radius: 20px;
-        }
-
-        .big-text {
-            flex: 1;
-        }
-
-        .big-text h1 {
-            font-size: clamp(42px, 7vw, 110px);
-            font-family: Cambria, Cochin, Georgia,
-                Times, 'Times New Roman', serif;
-
-            line-height: 1.05;
-            font-weight: 800;
-            color: rgb(2, 2, 83);
-        }
-
-        /* PROFILE CARD */
-
+        /* Profile Card */
         .profile-card {
             width: 320px;
             max-width: 100%;
             flex-shrink: 0;
-
             background-color: rgb(232, 237, 240);
             border-radius: 20px;
             overflow: hidden;
-
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
-            transition: transform 0.3s ease;
         }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* COVER */
 
         .cover {
             height: 150px;
-            background: linear-gradient(
-                135deg,
-                rgb(2, 2, 83),
-                rgb(35, 60, 160)
-            );
-
+            background-color: rgb(2, 2, 83);
             position: relative;
         }
 
-        /* PROFILE PICTURE */
-
+        /* Profile Picture */
         .profile-picture {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-
             position: absolute;
             left: 50%;
             top: 70px;
             transform: translateX(-50%);
-
             border: 4px solid white;
             outline: 2px solid rgb(190, 200, 207);
-
             background: white;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             overflow: hidden;
         }
 
@@ -137,229 +77,247 @@
             height: 62px;
         }
 
-        /* PROFILE INFO */
-
+        /* Profile Information */
         .profile-info {
             text-align: center;
             padding: 40px 20px 25px;
         }
 
         .profile-info h2 {
-            font-size: 23px;
-            color: rgb(2, 2, 83);
+            font-size: clamp(19px, 3vw, 24px);
             margin-bottom: 10px;
+            overflow-wrap: break-word;
         }
 
         .profile-info p {
             color: #666;
             margin: 6px 0;
-            font-size: 14px;
+            font-size: 15px;
         }
 
-        /* CONTACT DETAILS */
-
-        .contact-info {
-            margin-top: 15px;
-        }
-
-        .contact-info a {
-            display: block;
-            color: #333;
-            font-size: 12px;
-            text-decoration: none;
-            margin: 10px 0;
-            overflow-wrap: anywhere;
-        }
-
-        .contact-info a:hover {
-            color: #0a66c2;
-            text-decoration: underline;
-        }
-
-        .contact-info i {
-            margin-right: 7px;
-            color: rgb(2, 2, 83);
-        }
-
-        /* SOCIAL ICONS */
-
+        /* Social Icons */
         .social-icons {
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             gap: 15px;
             margin-top: 22px;
         }
 
         .social-icons a {
-            width: 44px;
-            height: 44px;
-
+            width: 46px;
+            height: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 50%;
-            font-size: 23px;
+            font-size: 24px;
             text-decoration: none;
-
             background: white;
-
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .social-icons a:hover {
-            transform: translateY(-6px) scale(1.12);
+            transform: translateY(-6px) scale(1.15);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
         }
 
-        .fa-linkedin {
-            color: #0a66c2;
+        .fa-facebook {
+            color: #1877F2;
+        }
+
+        .fa-instagram {
+            background: linear-gradient(
+                45deg,
+                #feda75,
+                #fa7e1e,
+                #d62976,
+                #962fbf,
+                #4f5bd5
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .fa-github {
-            color: #171515;
+            color: #6e40c9;
         }
 
-        /* PROFILE BUTTONS */
+        .fa-behance {
+            color: #1769ff;
+        }
 
+        /* Buttons */
         .profile-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: 22px;
+            margin-top: 20px;
         }
 
-        .profile-buttons a {
-            padding: 10px 20px;
+        .profile-buttons button {
+            padding: 10px 24px;
+            border: none;
             border-radius: 50px;
-
             background: rgb(2, 2, 83);
             color: white;
-
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-
+            font-size: 14px;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .profile-buttons a:hover {
+        .profile-buttons button:hover {
             background: rgb(5, 5, 20);
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
 
-        /* STATS */
-
+        /* Stats */
         .stats {
             border-top: 1px solid #ddd;
             padding: 18px 10px;
-
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            align-items: center;
         }
 
-        .stats > div {
-            width: 100%;
+        .stats-div {
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            gap: 5px;
-
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 7px;
             color: #555;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .stats i {
             font-size: 17px;
-            color: rgb(2, 2, 83);
         }
 
-        /* TABLET RESPONSIVENESS */
+        /* Hero Section */
+        .box {
+            display: flex;
+            align-items: stretch;
+            flex: 1;
+            min-width: 0;
+            min-height: 400px;
+            margin: 0;
+        }
 
-        @media screen and (max-width: 900px) {
+        .left-bar {
+            width: 12px;
+            flex-shrink: 0;
+            margin-right: 25px;
+            margin-top: 15px;
+            background: rgb(2, 2, 83);
+            border-radius: 20px;
+        }
 
+        .big-text {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .big-text h1 {
+            font-size: clamp(45px, 8vw, 110px);
+            font-family: Cambria, Cochin, Georgia, Times,
+                'Times New Roman', serif;
+            line-height: 1;
+            font-weight: 800;
+            color: rgb(2, 2, 83);
+            overflow-wrap: break-word;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
             .container {
+                width: 92%;
+                gap: 30px;
+            }
+
+            .big-text h1 {
+                font-size: clamp(42px, 7vw, 75px);
+            }
+
+            .left-bar {
+                margin-right: 18px;
+            }
+
+            .profile-card {
+                width: 300px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 650px) {
+            .container {
+                width: 90%;
+                min-height: 100vh;
                 flex-direction: column;
                 justify-content: center;
                 gap: 35px;
-                padding: 30px 0;
+                padding: 35px 0;
             }
 
             .box {
                 width: 100%;
+                min-height: auto;
                 justify-content: center;
-                flex: none;
-            }
-
-            .left-bar {
-                height: 230px;
-            }
-
-            .big-text h1 {
-                font-size: clamp(45px, 9vw, 75px);
-            }
-
-            .profile-card {
-                width: 340px;
-            }
-
-        }
-
-        /* MOBILE RESPONSIVENESS */
-
-        @media screen and (max-width: 480px) {
-
-            body {
-                padding: 15px;
-            }
-
-            .container {
-                gap: 25px;
-            }
-
-            .box {
-                gap: 12px;
+                margin: 0;
             }
 
             .left-bar {
                 width: 7px;
-                min-width: 7px;
-                height: 155px;
+                margin-right: 15px;
+                margin-top: 5px;
+            }
+
+            .big-text {
+                justify-content: center;
             }
 
             .big-text h1 {
-                font-size: clamp(36px, 10vw, 50px);
+                font-size: clamp(42px, 11vw, 65px);
+                text-align: left;
+            }
+
+            .profile-card {
+                width: min(100%, 350px);
+            }
+
+            .profile-info {
+                padding: 40px 15px 22px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 380px) {
+            .container {
+                width: 94%;
+                gap: 25px;
+            }
+
+            .big-text h1 {
+                font-size: 42px;
+            }
+
+            .left-bar {
+                margin-right: 10px;
             }
 
             .profile-card {
                 width: 100%;
-                max-width: 340px;
-            }
-
-            .cover {
-                height: 135px;
-            }
-
-            .profile-picture {
-                width: 95px;
-                height: 95px;
-                top: 65px;
-            }
-
-            .profile-info {
-                padding: 38px 15px 22px;
-            }
-
-            .profile-info h2 {
-                font-size: 21px;
             }
 
             .social-icons {
-                gap: 13px;
+                gap: 12px;
             }
 
             .social-icons a {
@@ -368,86 +326,50 @@
                 font-size: 21px;
             }
 
-            .profile-buttons {
-                gap: 10px;
+            .profile-buttons button {
+                padding: 9px 20px;
             }
 
-            .profile-buttons a {
-                padding: 10px 16px;
+            .stats {
+                padding: 15px 5px;
+            }
+
+            .stats-div {
+                gap: 5px;
                 font-size: 12px;
             }
-
-            .stats > div {
-                font-size: 11px;
-                gap: 3px;
-            }
-
-            .stats i {
-                font-size: 14px;
-            }
-
-        }
-
-        /* VERY SMALL SCREENS */
-
-        @media screen and (max-width: 350px) {
-
-            .big-text h1 {
-                font-size: 34px;
-            }
-
-            .left-bar {
-                height: 130px;
-            }
-
-            .profile-info {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .profile-buttons a {
-                padding: 9px 12px;
-            }
-
         }
 
     </style>
-
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- LEFT SIDE TEXT -->
-
+        <!-- Hero Section -->
         <div class="box">
 
             <div class="left-bar"></div>
 
             <div class="big-text">
-
                 <h1>
-                    Profile Card<br>
-                    UI/UX<br>
+                    Profile Card <br>
+                    Ui/UX <br>
                     Design
                 </h1>
-
             </div>
 
         </div>
 
-
-        <!-- PROFILE CARD -->
-
+        <!-- Profile Card -->
         <div class="profile-card">
 
             <div class="cover">
 
                 <div class="profile-picture">
 
-                    <!-- DEVELOPER ICON -->
-
+                    <!-- Developer Icon -->
                     <svg viewBox="0 0 64 64"
                         xmlns="http://www.w3.org/2000/svg"
                         role="img"
@@ -485,98 +407,60 @@
 
             </div>
 
-
-            <!-- PERSONAL DETAILS -->
-
+            <!-- Profile Information -->
             <div class="profile-info">
 
                 <h2>Website Developer</h2>
 
                 <p>Dezyne Ecole College</p>
 
-                <p>BCA 1st Year</p>
+                <p>BCA 1st year</p>
 
-
-                <!-- CONTACT INFORMATION -->
-
-                <div class="contact-info">
-
-                    <a href="tel:6378748417">
-                        <i class="fa-solid fa-phone"></i>
-                        6378748417
-                    </a>
-
-                    <a href="mailto:priyanshjain08.official@gmail.com">
-                        <i class="fa-solid fa-envelope"></i>
-                        priyanshjain08.official@gmail.com
-                    </a>
-
-                </div>
-
-
-                <!-- SOCIAL MEDIA -->
-
+                <!-- Social Media Icons -->
                 <div class="social-icons">
 
-                    <!-- LINKEDIN -->
-
-                    <a href="https://www.linkedin.com/in/priyanshjain08/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn">
-
-                        <i class="fa-brands fa-linkedin"></i>
-
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
                     </a>
 
-
-                    <!-- GITHUB -->
-
-                    <a href="https://github.com/priyansh"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub">
-
+                    <a href="#" aria-label="GitHub">
                         <i class="fa-brands fa-github"></i>
+                    </a>
 
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Behance">
+                        <i class="fa-brands fa-behance"></i>
                     </a>
 
                 </div>
 
-
-                <!-- BUTTONS -->
-
+                <!-- Profile Buttons -->
                 <div class="profile-buttons">
 
-                    <a href="mailto:priyanshjain08.official@gmail.com">
-                        Contact Me
-                    </a>
+                    <button>Subscribe</button>
 
-                    <a href="https://github.com/priyansh"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        My Projects
-                    </a>
+                    <button>Manage</button>
 
                 </div>
 
-            </div>
+                <!-- Statistics -->
+                <div class="stats">
 
+                    <div class="stats-div">
 
-            <!-- STATS -->
+                        <i class="fa-regular fa-heart"></i>
+                        <span>69.1k</span>
 
-            <div class="stats">
+                        <i class="fa-regular fa-comment"></i>
+                        <span>20k</span>
 
-                <div>
+                        <i class="fa-solid fa-share"></i>
+                        <span>12k</span>
 
-                    <i class="fa-regular fa-heart"></i>
-                    <span>69.1k</span>
-
-                    <i class="fa-regular fa-comment"></i>
-                    <span>20k</span>
-
-                    <i class="fa-solid fa-share"></i>
-                    <span>12k</span>
+                    </div>
 
                 </div>
 
