@@ -217,7 +217,11 @@ header {
     gap: 12px;
     animation: fadeUp .8s var(--ease) 1.35s backwards;
 }
-
+/* Remove underline from Hero Section buttons */
+.button button a {
+    text-decoration: none !important;
+    color: inherit;
+}
 .button button {
     display: inline-flex;
     align-items: center;
