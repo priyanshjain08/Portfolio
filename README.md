@@ -334,6 +334,7 @@ http://localhost:8000
 
 \- \*\*Static Website:\*\* The portfolio does not require a database, backend server, or build process.
 
+<br>
 
 
 \## Accessibility
@@ -348,6 +349,7 @@ The responsive layout adapts to different screen sizes to provide a consistent b
 
 
 
+<br>
 <!--## Deployment
 
 
@@ -371,6 +373,7 @@ Upload the complete project while preserving its folder structure. Ensure that `
 
 
 
+<br>
 
 \*\*Personal Portfolio Project\*\*
 
