@@ -304,9 +304,15 @@
                 </div>
                 <div class="card-bottom">
                     <div class="progress">
+
                         <div class="progress-bar" style="width:75%"></div>
                     </div>
                     <p>75%</p>
+
+                        <div class="progress-bar" style="width:95%"></div>
+                    </div>
+                    <p>95%</p>
+
                 </div>
             </div>
         </div>
@@ -583,6 +589,76 @@
 
 
 
+    <!-- FOOTER -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="footer-dot"></span>
+                    <h2>Priyansh Jain</h2>
+                </div>
+                <p class="footer-role">BCA First Year &middot; Web Developer</p>
+                <p class="footer-about">I'm a 1st year BCA student at Dezyne &Eacute;cole College, Ajmer, learning to build
+                    responsive websites with HTML5, CSS3 and JavaScript. Every assignment here is a step on my way to
+                    becoming a web developer.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/priyanshjain08" target="_blank" rel="noopener" aria-label="GitHub" class="fs-github"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/priyanshjain08" target="_blank" rel="noopener" aria-label="LinkedIn" class="fs-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/6378748417" target="_blank" rel="noopener" aria-label="WhatsApp" class="fs-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:priyanshjain08.offical@gmail.com" aria-label="Email" class="fs-mail"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+916378748417" aria-label="Call" class="fs-phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <nav class="footer-col" aria-label="Footer navigation">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#hero"><i class="fas fa-angle-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-angle-right"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-angle-right"></i> Skills</a></li>
+                    <li><a href="#assignments"><i class="fas fa-angle-right"></i> Assignments</a></li>
+                    <li><a href="#contact"><i class="fas fa-angle-right"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-col">
+                <h3>What I Work With</h3>
+                <ul class="footer-tags">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Flexbox &amp; Grid</li>
+                    <li>Responsive Design</li>
+                    <li>Git &amp; GitHub</li>
+                </ul>
+                <ul class="footer-mini">
+                    <li><a href="Project 1 Background Image/Project_1.html"><i class="fas fa-angle-right"></i> Background Image</a></li>
+                    <li><a href="Project_3.html"><i class="fas fa-angle-right"></i> Flexbox Layout</a></li>
+                    <li><a href="Project 11 Login Page/login-form.html"><i class="fas fa-angle-right"></i> Login Form</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i><span>Ajmer, Rajasthan, India</span></li>
+                    <li><i class="fas fa-graduation-cap"></i><span>Dezyne &Eacute;cole College</span></li>
+                    <li><i class="fas fa-phone"></i><a href="tel:+916378748417">+91 63787 48417</a></li>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:priyanshjain08.offical@gmail.com">priyanshjain08.offical@gmail.com</a></li>
+                </ul>
+                <a class="footer-cta" href="#contact"><i class="fas fa-paper-plane"></i> Send Me a Message</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2026</span> Priyansh Jain. All rights reserved.</p>
+            <p class="footer-made">Built with <i class="fas fa-heart"></i> in Ajmer using HTML, CSS &amp; JS</p>
+            <a href="#hero" class="footer-top" aria-label="Back to top">Back to top <i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+
+
     <script>
         // Make each assignment card open its matching project.
         document.querySelectorAll('.assignment-cards[data-project]').forEach(card => {
@@ -595,6 +671,8 @@
                 }
             });
         });
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
     </script>
 
 
