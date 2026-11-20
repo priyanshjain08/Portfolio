@@ -280,6 +280,8 @@ http://localhost:8000
 - **Contact Form:** The contact form uses a `mailto:` action. It opens the visitor's default email application rather than sending messages through a backend.
 - **Static Website:** The portfolio does not require a database, backend server, or build process.
 
+<br>
+
 ## Accessibility
 
 The website includes keyboard navigation support, visible focus indicators, descriptive image alternative text, and reduced-motion support.
@@ -297,6 +299,9 @@ This project can be deployed using static hosting platforms such as:
 Upload the complete project while preserving its folder structure. Ensure that `index.html` is available as the entry point.
 -->
 ---
+
+<br>
+
 
 **Personal Portfolio Project**
 
