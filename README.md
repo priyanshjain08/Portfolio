@@ -4,7 +4,7 @@
 \# Priyansh Jain — Personal Portfolio
 
 
-A responsive personal portfolio website for **Priyansh Jain**, a BCA student at Dezyne École Collège, Ajmer. The website showcases personal information, education, technical skills, and 11 HTML and CSS coursework assignments through an interactive portfolio.
+A responsive personal portfolio website of **Priyansh Jain**, a BCA student at Dezyne École Collège, Ajmer. The website showcases personal information, education, technical skills, and 11 HTML and CSS coursework assignments through an interactive portfolio.
 
 
 
