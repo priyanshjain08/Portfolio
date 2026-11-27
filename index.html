@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <noscript>
+        <style>
+            #boot {
+                display: none
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <!-- BOOT SCREEN -->
+    <div id="boot" role="status" aria-label="Loading portfolio">
+        <div class="boot-door boot-door-l"></div>
+        <div class="boot-door boot-door-r"></div>
+
+        <div class="boot-content" aria-hidden="true">
+            <svg class="boot-arch" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="boot-clip">
+                        <path d="M20 150V70a40 40 0 0 1 80 0v80z" />
+                    </clipPath>
+                </defs>
+                <!-- water-level fill that rises with progress -->
+                <g clip-path="url(#boot-clip)">
+                    <rect id="boot-fill" x="0" y="150" width="120" height="150" fill="#1E40D8" />
+                </g>
+                <!-- jharokha arch outlines (draw themselves in) -->
+                <path class="boot-line" pathLength="1" d="M20 150V70a40 40 0 0 1 80 0v80z" />
+                <path class="boot-line boot-line-inner" pathLength="1" d="M32 150V72a28 28 0 0 1 56 0v78" />
+                <circle class="boot-sun" cx="60" cy="98" r="9" />
+                <circle class="boot-finial" cx="60" cy="22" r="3.5" />
+            </svg>
+
+            <h2 class="boot-name">Priyansh Jain</h2>
+            <p class="boot-role">Web Developer &middot; Ajmer</p>
+
+            <div class="boot-status">
+                <span id="boot-msg">Firing up the kiln</span>
+                <span id="boot-num">0%</span>
+            </div>
+            <div class="boot-meter"><i id="boot-bar"></i></div>
+        </div>
+
+        <button id="boot-skip" type="button" aria-label="Skip loading screen">Skip &rarr;</button>
+    </div>
+    <script>
+        (function () {
+            var boot = document.getElementById('boot');
+            if (!boot) return;
+            document.body.classList.add('booting');
+
+            var fill = document.getElementById('boot-fill');
+            var bar = document.getElementById('boot-bar');
+            var num = document.getElementById('boot-num');
+            var msg = document.getElementById('boot-msg');
+            var messages = ['Firing up the kiln', 'Glazing the pixels', 'Painting the arches', 'Welcome to my portfolio'];
+
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var MIN_TIME = reduce ? 300 : 2400;   // shortest the loader stays (ms)
+            var MAX_WAIT = 6000;                  // never wait longer than this for slow images
+            var start = performance.now();
+            var loaded = document.readyState === 'complete';
+            var finished = false, lastMsg = -1;
+
+            window.addEventListener('load', function () { loaded = true; });
+            setTimeout(function () { loaded = true; }, MAX_WAIT);
+
+            function finish() {
+                if (finished) return;
+                finished = true;
+                boot.classList.add('boot-done');             // content fades out
+                setTimeout(function () {
+                    boot.classList.add('boot-open');         // doors slide apart
+                    document.body.classList.remove('booting'); // page animations start + scroll unlocks
+                    setTimeout(function () { boot.remove(); }, reduce ? 0 : 1100);
+                }, reduce ? 0 : 450);
+            }
+
+            function frame(now) {
+                if (finished) return;
+                var t = Math.min((now - start) / MIN_TIME, 1);
+                var p = loaded ? t : Math.min(t, 0.92);     // hold near the end until the page is ready
+                var eased = 1 - Math.pow(1 - p, 2.2);
+
+                fill.setAttribute('y', 150 - 124 * eased);
+                bar.style.transform = 'scaleX(' + eased + ')';
+                num.textContent = Math.round(eased * 100) + '%';
+
+                var m = Math.min(messages.length - 1, Math.floor(eased * messages.length));
+                if (m !== lastMsg) {
+                    lastMsg = m;
+                    msg.textContent = messages[m];
+                    msg.classList.remove('swap'); void msg.offsetWidth; msg.classList.add('swap');
+                }
+
+                if (p >= 1) { setTimeout(finish, 250); return; }
+                requestAnimationFrame(frame);
+            }
+
+            requestAnimationFrame(frame);
+            document.getElementById('boot-skip').addEventListener('click', finish);
+        })();
+    </script>
+
+    <header>
+        <div class="logo">
+            <div class="dot"></div>
+            <h1>Priyansh Jain</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="hero">
+        <div class="hero-left">
+            <div class="address"> <i class="fas fa fa-graduation-cap"></i>
+                <p>Dezyne École College</p>
+            </div>
+            <h1>Priyansh <br> Jain</h1>
+            <h2 style="color: blue;">BCA first year - Web Developer</h2>
+            <p>I'm learning to build responsive websites with HTML5 and CSS3 <br> Browse my assignments, check my
+                skills, get in touch.</p>
+            <div class="button">
+                <a href="#assignments">
+                    <i class="fas fa-folder"></i> View Assignments
+                </a>
+
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+            <div class="icon">
+                <a href="tel:+916378748417"><i class="fas fa-phone"></i></a>
+                <a href="https://wa.me/6378748417"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:priyanshjain08.offical@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/priyanshjain08"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/priyanshjain08"> <i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="oval"></div>
+            <div class="circle"></div>
+            <div class="mirror"><img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+                    alt=""></div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION  -->
+
+    <section class="about" id="about">
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive
+                        Design</span><span>Flexbox &amp;
+                        Grid</span><span>Git &amp; GitHub</span>
+                </div>
+                <div class="marquee-group">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive
+                        Design</span><span>Flexbox &amp;
+                        Grid</span><span>Git &amp; GitHub</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-left">
+                <div class="miror"><img src="assets\avatar (3).png" alt=""></div>
+            </div>
+            <div class="box-right">
+                <h1>Learning to build for the Web</h1>
+                <p>Hello! I'm Priyansh Jain a 1st year BCA Student at Dezyne École College. I'm passionate about web
+                    development and have been learning HTML5 & CSS3 to build modern responsive designs.</p>
+                <div class="bold">
+                    <i class="fas fa-school"></i>
+                    <div class="bold-inner">
+                        <h4>About my college</h4>
+                        <p>Dezyne École Collège is a premier institution known for its quality education in computer
+                            science and information technology. The curriculum focuses on practical, industry-relevant
+                            skills combined with strong theoretical foundations.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="learning">
+                    <h3>My Learning Path</h3>
+                    <ul>
+                        <li>Complete HTML & CSS fundamentals (30 class curriculum)</li>
+                        <li>Building responsive web layouts with Flexbox</li>
+                        <li>Creating interactive forms and animations</li>
+                        <li>Learning web hosting and deployment</li>
+                    </ul>
+                    <p>Throughout I focus on modern web design best practices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="skills" id="skills">
+        <h1>My Skills</h1>
+        <p>The technical skills I've developed during my first year of BCA.</p>
+        <div class="cards">
+            <div class="card">
+                <div class="card-top">
+                    <i class="fab fa-html5" style="color:#F26B3A"></i>
+                    <div class="level">
+                        <h4>HTML5</h4>
+                        <p>Expert Level</p>
+                    </div>
+                </div>
+
+                <!-- <div class="card-bottom"> -->
+                <!-- <div class="card-bottom">
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:95%"></div>
+                    </div>
+                    <p>95%</p>
+
+                </div>
+            </div> -->
+
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <i class="fab fa-css3" style="color:#5B93FF"></i>
+                    <div class="level">
+                        <h4>CSS3</h4>
+                        <p>Expert Level</p>
+                    </div>
+                </div>
+
+                <!-- <div class="card-bottom"> -->
+                    <!-- <div class="card-bottom">
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:90%"></div>
+                    </div>
+                    <p>90%</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <i class="fab fa-js" style="color:#FFD43B"></i>
+                    <div class="level">
+                        <h4>JavaScript</h4>
+                        <p>Intermediate</p>
+                    </div>
+                </div>
+    <div class="card-bottom">
+       </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-top">
+                        <i class="fa-brands fa-windows" style="color:#FFD43B"></i>
+                        <div class="level">
+                            <h4>Basic Computer</h4>
+                            <p>Intermediate</p>
+                        </div>
+                    </div>
+                    <!-- <div class="card-bottom">
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:70%"></div>
+                    </div>
+                    <p>70%</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <i class="fab fa-html5" style="color:#2DD4CF"></i>
+                    <div class="level">
+                        <h4>Responsive Design</h4>
+                        <p>Advanced</p>
+                    </div>
+                </div>
+                <div class="card-bottom">
+
+                </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-top">
+                        <i class="fa-solid fa-paintbrush" style="color:#2DD4CF"></i>
+                        <div class="level">
+                            <h4>Canva</h4>
+                            <p>Advanced</p>
+                        </div>
+                    </div>
+                    <!-- <div class="card-bottom">
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:85%"></div>
+                    </div>
+                    <p>85%</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <i class="fab fa-html5" style="color:var(--marigold)"></i>
+                    <div class="level">
+                        <h4>Flexbox & Grid</h4>
+                        <p>Advanced</p>
+                    </div>
+                </div>
+                <div class="card-bottom">
+
+                </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-top">
+                        <i class="fa fa-file-code" style="color:var(--marigold)"></i>
+                        <div class="level">
+                            <h4>C Programming</h4>
+                            <p>Advanced</p>
+                        </div>
+                    </div>
+                    <!-- <div class="card-bottom">
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:88%"></div>
+                    </div>
+                    <p>88%</p>
+
+                </div>
+
+                </div> -->
+
+                </div>
+                <div class="card">
+                    <div class="card-top">
+                        <i class="fab fa-github" style="color:#fff"></i>
+                        <div class="level">
+                            <h4>Git & Github</h4>
+                            <p>Expert Level</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="card-bottom"> -->
+
+                        <!-- <div class="card-bottom">
+
+                    <div class="progress">
+
+                       
+                        <div class="progress-bar" style="width:95%"></div>
+
+                    </div>
+                    <p>95%</p>
+
+                    </div> -->
+                        <!-- <p>95%</p> -->
+
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!-- ASSIGNMENTSSSS SECTIONNNNNN -->
+
+
+    <section class="Assignment" id="assignments">
+        <h1>My Assignments</h1>
+        <p>Key assignments and projects from the HTML & CSS</p>
+        <div class="assignment-card">
+
+
+            <div class="assignment-cards" data-project="Project 1 Background Image/Project_1.html" role="link"
+                tabindex="0" aria-label="Open assignment project">
+
+                <div class="element"></div>
+                <div class="assignment-top t1"></div>
+                <div class="assignment-bottom">
+                    <h4>Background Image</h4>
+                    <p><b>Task:</b> Add a scenic background image to a webpage.</p>
+                    <ul>
+                        <li>Used CSS background-image property</li>
+                        <li>Applied background-size: cover</li>
+                        <li>Prevented image repetition</li>
+                        <li>Created an immersive visual background</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project_2.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t2"></div>
+                <div class="assignment-bottom">
+                    <h4>Newspaper Layout</h4>
+                    <p><b>Task:</b> Create a newspaper-style webpage.</p>
+                    <ul>
+                        <li>Designed a newspaper-inspired layout</li>
+                        <li>Added a newspaper title and main heading</li>
+                        <li>Organized content into sections</li>
+                        <li>Created a traditional newspaper appearance</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project_3.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t3"></div>
+                <div class="assignment-bottom">
+                    <h4>Flexbox Layout</h4>
+                    <p><b>Task:</b>Create a structured webpage using CSS Flexbox.</p>
+                    <ul>
+                        <li>Used display: flex property</li>
+                        <li>Applied flex-direction: column</li>
+                        <li>Organized webpage into different sections</li>
+                        <li>Created a structured page layout</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="assignment-cards" data-project="Project 4 Dynamic Gallery/Project_4.html" role="link"
+                tabindex="0" aria-label="Open assignment project">
+
+                <div class="assignment-top t4"></div>
+                <div class="assignment-bottom">
+                    <h4>Image Gallery</h4>
+                    <p><b>Task:</b>Create a dynamic gallery to display multiple images.</p>
+                    <ul>
+                        <li>Created a main gallery container</li>
+                        <li>Added multiple images using HTML</li>
+                        <li>Organized images into separate sections</li>
+                        <li>Designed a structured gallery layout</li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project_5.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t5"></div>
+                <div class="assignment-bottom">
+                    <h4>Profile Card</h4>
+                    <p><b>Task:</b>Create an attractive developer profile card.</p>
+                    <ul>
+                        <li>Designed a profile card with rounded corners</li>
+                        <li>Added a customized cover section</li>
+                        <li>Created a circular developer icon</li>
+                        <li>Applied box shadows for a modern appearance</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="assignment-cards" data-project="Project 6 Multi page navigation/Project_6.html" role="link"
+                tabindex="0" aria-label="Open assignment project">
+
+                <div class="assignment-top t6"></div>
+                <div class="assignment-bottom">
+                    <h4>Navigation Bar Design</h4>
+                    <p><b>Task:</b>Create a navigation bar for a multi-page website.</p>
+                    <ul>
+                        <li>Created navigation links using HTML lists</li>
+                        <li>Added Home, About, Project, Achievements and Contact sections</li>
+                        <li>Removed default list styling</li>
+                        <li>Applied a rounded navigation bar design</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="assignment-cards" data-project="Project_7.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="element"></div>
+                <div class="assignment-top t1"></div>
+                <div class="assignment-bottom">
+                    <h4>HTML Table Structure</h4>
+                    <p><b>Task:</b>Create an electronics item table using HTML table tags.</p>
+                    <ul>
+                        <li>Applied a sky-blue background on hover</li>
+                        <li>Made the table more interactive and user-friendly</li>
+                        <li>Added padding to table cells for better spacing</li>
+                        <li>Displayed the total amount in the final column</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project 8-Iframe-main/index.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t2"></div>
+                <div class="assignment-bottom">
+                    <h4>Sidebar Navigation</h4>
+                    <p><b>Task:</b>Create a sidebar menu to navigate between different projects.</p>
+                    <ul>
+                        <li>Styled links with a dark blue background, white text, and rounded
+                            corners</li>
+                        <li>Used padding and gap to maintain proper spacing between links</li>
+                        <li>Applied flex: 1 to the content section so it occupies the remaining
+                            space</li>
+                        <li>Applied a dark navy background with white text</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project_9.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t3"></div>
+                <div class="assignment-bottom">
+                    <h4>CSS Box Model Structure</h4>
+                    <p><b>Task:</b>Demonstrate the four main components of the CSS Box Model.</p>
+                    <ul>
+                        <li>Represented the Margin, Border, Padding, and Content areas</li>
+                        <li>Used different background colors to distinguish each box-model layer
+                        </li>
+                        <li>Added labels to identify each component clearly</li>
+                        <li>Used margin: auto to center the outer box horizontally</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project 10-animation.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t4"></div>
+                <div class="assignment-bottom">
+                    <h4>CSS Animation Examples</h4>
+                    <p><b>Task:</b>Create six small boxes to demonstrate different CSS animation
+                        effects.</p>
+                    <ul>
+                        <li>Used Flexbox to arrange the boxes in a centered layout</li>
+                        <li>Added individual background colors and rounded borders</li>
+                        <li>Added different animation-delay values to create a sequential bouncing
+                            effect</li>
+                        <li>Used animation-iteration-count: infinite to repeat animations
+                            continuously</li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+
+            <div class="assignment-cards" data-project="Project 11 Login Page/login-form.html" role="link" tabindex="0"
+                aria-label="Open assignment project">
+
+                <div class="assignment-top t5"></div>
+                <div class="assignment-bottom">
+                    <h4>Login Form Layout</h4>
+                    <p><b>Task:</b>Create a clean and structured login form using HTML and CSS.</p>
+                    <ul>
+                        <li>A centered login box with a fixed width and height.</li>
+                        <li>Email/Username and Password input fields</li>
+                        <li>Uses Flexbox to center the login box horizontally and vertically</li>
+                        <li>Sign Up link directs new users to the registration page</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="banner">
+
+            <img src="assets\Neon Developer Workspace Banner.png" alt="">
+
+            <div class="banner-text">
+                <h1>Contact Me</h1>
+                <p>Based in Ajmer, Rajasthan. Call, message, or send a note.</p>
+            </div>
+        </div>
+        <div class="contact-info">
+            <div class="information">
+                <h3>Contact Information</h3>
+                <div class="info"><i class="fas fa-phone"></i>
+                    <p>Phone</p>
+                    <a href="tel:+916378748417">+916378748417</a>
+                </div>
+                <div class="info"><i class="fas fa-envelope"></i>
+                    <p>Email</p>
+                    <a href="mailto:priyanshjain08.offical@gmail.com">priyanshjain08.offical@gmail.com</a>
+                </div>
+                <div class="info"><i class="fab fa-whatsapp"></i>
+                    <p>Whatsapp</p>
+                    <a href="https://wa.me/6378748417">Message on WhatsApp</a>
+                </div>
+                <div class="info"><i class="fas fa-map-marker-alt"></i>
+                    <p>Address</p>
+                    <b>Ajmer, Rajasthan, India</b>
+                </div>
+                <div class="info"><i class="fas fa-graduation-cap"></i>
+                    <p>College</p>
+                    <b>Dezyne Ecole Collge</b>
+                </div>
+            </div>
+            <form action="mailto:priyanshjain08.official@gmail.com">
+                <h1>Send Me a Message</h1>
+                <label for="">Full Name</label>
+                <input type="text" placeholder="your name">
+                <label for="">Email</label>
+                <input type="email" placeholder="abc@gmail.com">
+                <label for="">Subject</label>
+                <input type="text" placeholder="What is this About">
+                <label for="">Message</label>
+                <textarea name="" id="">Type your Message here</textarea>
+                <button class="submit"><i class="fas fa-paper-plane"></i>Send Me</button>
+            </form>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="footer-dot"></span>
+                    <h2>Priyansh Jain</h2>
+                </div>
+                <p class="footer-role">BCA First Year &middot; Web Developer</p>
+                <p class="footer-about">I'm a 1st year BCA student at Dezyne &Eacute;cole College, Ajmer, learning to
+                    build
+                    responsive websites with HTML5, CSS3 and JavaScript. Every assignment here is a step on my way to
+                    becoming a web developer.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/priyanshjain08" target="_blank" rel="noopener" aria-label="GitHub"
+                        class="fs-github"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/priyanshjain08" target="_blank" rel="noopener"
+                        aria-label="LinkedIn" class="fs-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/6378748417" target="_blank" rel="noopener" aria-label="WhatsApp"
+                        class="fs-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:priyanshjain08.offical@gmail.com" aria-label="Email" class="fs-mail"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="tel:+916378748417" aria-label="Call" class="fs-phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <nav class="footer-col" aria-label="Footer navigation">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#hero"><i class="fas fa-angle-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-angle-right"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-angle-right"></i> Skills</a></li>
+                    <li><a href="#assignments"><i class="fas fa-angle-right"></i> Assignments</a></li>
+                    <li><a href="#contact"><i class="fas fa-angle-right"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-col">
+                <h3>What I Work With</h3>
+                <ul class="footer-tags">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Flexbox &amp; Grid</li>
+                    <li>Responsive Design</li>
+                    <li>Git &amp; GitHub</li>
+                </ul>
+                <ul class="footer-mini">
+                    <li><a href="Project 1 Background Image/Project_1.html"><i class="fas fa-angle-right"></i>
+                            Background Image</a></li>
+                    <li><a href="Project_3.html"><i class="fas fa-angle-right"></i> Flexbox Layout</a></li>
+                    <li><a href="Project 11 Login Page/login-form.html"><i class="fas fa-angle-right"></i> Login
+                            Form</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i><span>Ajmer, Rajasthan, India</span></li>
+                    <li><i class="fas fa-graduation-cap"></i><span>Dezyne &Eacute;cole College</span></li>
+                    <li><i class="fas fa-phone"></i><a href="tel:+916378748417">+91 63787 48417</a></li>
+                    <li><i class="fas fa-envelope"></i><a
+                            href="mailto:priyanshjain08.official@gmail.com">priyanshjain08.official@gmail.com</a></li>
+                </ul>
+                <a class="footer-cta" href="#contact"><i class="fas fa-paper-plane"></i> Send Me a Message</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2026</span> Priyansh Jain. All rights reserved.</p>
+            <p class="footer-made">Built with <i class="fas fa-heart"></i> in Ajmer using HTML, CSS &amp; JS</p>
+            <a href="#hero" class="footer-top" aria-label="Back to top">Back to top <i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Make each assignment card open its matching project.
+        document.querySelectorAll('.assignment-cards[data-project]').forEach(card => {
+            const openProject = () => { window.location.href = card.dataset.project; };
+            card.addEventListener('click', openProject);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openProject();
+                }
+            });
+        });
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    </script>
+
+
+</body>
+
+</html>
