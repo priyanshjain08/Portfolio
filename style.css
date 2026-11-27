@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap");
+
+/* ============ TOKENS ============
+   Palette borrowed from Jaipur blue pottery and marigold garlands.
+   Motif: the jharokha arch (rounded-top window) used for photos and icons. */
 :root {
     --paper: #F4F7FF;
     --white: #FFFFFF;
@@ -9,6 +14,7 @@
     --display: 'Bricolage Grotesque', system-ui, sans-serif;
     --body: 'Figtree', system-ui, sans-serif;
     --ease: cubic-bezier(.2, .8, .2, 1);
+    /* the reference "wrap": content is centred and capped at 1120px */
     --side: max(24px, calc((100% - 1120px) / 2));
     --section-y: clamp(64px, 9vw, 112px);
 }
@@ -22,10 +28,11 @@
 html {
     scroll-behavior: smooth;
 }
+
 section {
     scroll-margin-top: 80px;
+    /* set this to your header's height */
 }
-
 
 body {
     font-family: var(--body);
@@ -54,12 +61,13 @@ a {
     outline-color: var(--marigold);
 }
 
+/* ============ HEADER ============ */
 header {
     position: sticky;
     top: 0;
+    z-index: 50;
     display: flex;
     align-items: center;
-    z-index: 10;
     justify-content: space-between;
     gap: 16px;
     padding: 10px var(--side);
@@ -118,6 +126,7 @@ header {
     color: var(--cobalt);
 }
 
+/* last nav item (Contact) is the filled pill */
 .nav li:last-child a {
     background: var(--cobalt);
     color: #fff;
@@ -128,6 +137,7 @@ header {
     color: #fff;
 }
 
+/* ============ HERO ============ */
 .hero {
     position: relative;
     overflow: hidden;
@@ -155,6 +165,7 @@ header {
     min-width: 0;
 }
 
+/* college pill */
 .address {
     display: inline-flex;
     align-items: center;
@@ -182,6 +193,7 @@ header {
     animation: fadeUp 1s var(--ease) .25s backwards;
 }
 
+/* !important only because the HTML has an inline colour on this tag */
 .hero-left>h2 {
     font-family: var(--display);
     font-weight: 700;
@@ -203,10 +215,11 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    text-decoration: none !important;
     animation: fadeUp .8s var(--ease) 1.35s backwards;
 }
 
-.button button {
+.button a {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -215,32 +228,35 @@ header {
     padding: 14px 26px;
     border-radius: 999px;
     border: 2px solid var(--ink);
+    text-decoration: none !important;
+    color: inherit;
     transition: transform .25s var(--ease), background .25s, color .25s, box-shadow .25s;
 }
 
-.button button:first-child {
+.button a:first-child {
     background: var(--ink);
-    color: #fff !important;
+    color: #fff;
+    text-decoration: none !important;
 }
 
-.button button:first-child:hover {
+.button a:first-child:hover {
     background: var(--cobalt);
     border-color: var(--cobalt);
     transform: translateY(-3px);
     box-shadow: 0 12px 24px -10px rgba(30, 64, 216, .6);
 }
 
-.button button:last-child {
+.button a:last-child {
     background: transparent;
-    color: var(--ink) !important;
+    color: var(--ink);
+    text-decoration: none !important;
 }
 
-.button button:last-child:hover {
+.button a:last-child:hover {
     background: var(--marigold);
     border-color: var(--marigold);
     transform: translateY(-3px);
 }
-
 .icon {
     display: flex;
     gap: 10px;
@@ -254,7 +270,6 @@ header {
     display: grid;
     place-items: center;
     border-radius: 50%;
-    line-height: 40px;
     background: var(--white);
     border: 1px solid rgba(14, 27, 77, .12);
     font-size: 1.1rem;
@@ -267,18 +282,38 @@ header {
     color: #fff;
     transform: translateY(-5px) rotate(-8deg);
 }
+
+/* Hover colours for individual hero icons */
 .icon i.fa-whatsapp:hover {
-    background: #25D366;   
+    background: #25D366;
+    /* WhatsApp green */
 }
 
 .icon i.fa-github:hover {
-    background: #111111;   
+    background: #111111;
+    /* GitHub black */
 }
 
 .icon i.fa-envelope:hover {
-    background: #FF8A8A;   
+    background: #FF8A8A;
+    /* light red */
 }
 
+.icon a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+}
+
+.icon a:visited {
+    text-decoration: none;
+}
+
+.icon a:hover {
+    text-decoration: none;
+}
+
+/* Arch photo */
 .hero-right {
     position: relative;
     width: 100%;
@@ -333,6 +368,7 @@ header {
     transform: scale(1.07);
 }
 
+/* floating HTML5 / CSS3 chips (drawn with pseudo-elements, no extra HTML) */
 .hero-right::before,
 .hero-right::after {
     position: absolute;
@@ -362,6 +398,7 @@ header {
     background: radial-gradient(circle at 20px 50%, var(--cobalt) 0 7px, transparent 8px), var(--white);
 }
 
+/* ============ TICKER (marquee) ============ */
 .marquee {
     background: var(--ink);
     color: #fff;
@@ -401,6 +438,7 @@ header {
     margin-left: 28px;
 }
 
+/* ============ ABOUT ============ */
 .about {
     padding-bottom: var(--section-y);
 }
@@ -545,6 +583,7 @@ header {
     font-weight: 500;
 }
 
+/* ============ SKILLS ============ */
 .skills {
     position: relative;
     overflow: hidden;
@@ -594,11 +633,14 @@ header {
 }
 
 .card-top {
-    padding-top : 20px;
     display: flex;
     align-items: center;
     gap: 16px;
     margin-bottom: 20px;
+
+
+    padding-top: 20px;
+
 }
 
 .skills i {
@@ -654,6 +696,7 @@ header {
     color: #fff;
 }
 
+/* ============ ASSIGNMENTS ============ */
 .Assignment {
     padding: var(--section-y) var(--side);
 }
@@ -715,6 +758,7 @@ header {
     --c: var(--ink);
 }
 
+/* arch-shaped icon badge (Font Awesome glyph drawn with ::after, no extra HTML) */
 .assignment-top::after {
     content: "\f1c9";
     position: absolute;
@@ -804,10 +848,7 @@ header {
     place-items: center;
 }
 
-a{
-    text-decoration: none;
-}
-
+/* ============ CONTACT ============ */
 .contact {
     padding: 0 var(--side) var(--section-y);
 }
@@ -825,7 +866,7 @@ a{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: expand 24s ease-in-out infinite alternate;
+    animation: kenburns 24s ease-in-out infinite alternate;
 }
 
 .banner::after {
@@ -866,6 +907,7 @@ a{
     margin-top: 28px;
 }
 
+/* icon on the left, label above value on the right */
 .info {
     display: grid;
     grid-template-columns: 48px 1fr;
@@ -987,6 +1029,31 @@ form textarea:user-invalid {
     box-shadow: 0 12px 24px -10px rgba(30, 64, 216, .6);
 }
 
+/* ============ KEYFRAMES ============ */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+}
+
+@keyframes archRise {
+    from {
+        opacity: 0;
+        transform: translateY(48px) scale(.95);
+    }
+}
+
+@keyframes type {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
 @keyframes float {
     50% {
         transform: translateY(-14px);
@@ -1012,12 +1079,26 @@ form textarea:user-invalid {
     }
 }
 
-@keyframes expand {
+@keyframes grow {
+    from {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes draw {
+    from {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes kenburns {
     to {
         transform: scale(1.12) translateX(-2%);
     }
 }
 
+/* Skill bars and the learning-path line fill as they scroll into view
+   (CSS scroll-driven animation; browsers without it play them once on load). */
 @supports (animation-timeline: view()) {
     .progress-bar {
         animation: grow linear both;
@@ -1031,22 +1112,6 @@ form textarea:user-invalid {
         animation-range: entry 20% cover 60%;
     }
 }
-
-    footer {
-        background-color: #101d4d;
-        color: white;
-        text-align: center;
-        padding: 35px;
-        border-top: 3px solid #3457e8;
-    }
-
-    footer h2 {
-        font-size: 22px;
-    }
-
-    footer p {
-        font-size: 16px;
-    }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 860px) {
@@ -1105,3 +1170,504 @@ form textarea:user-invalid {
         scroll-behavior: auto !important;
     }
 }
+
+/* ============ BOOT SCREEN ============
+   Jharokha arch fills up like a blue-pottery vessel, then the two
+   "doors" slide apart to reveal the site. */
+body.booting {
+    overflow: hidden;
+}
+
+/* hold the page's entrance animations until the doors open */
+body.booting>section,
+body.booting>section *,
+body.booting>section *::before,
+body.booting>section *::after {
+    animation-play-state: paused !important;
+}
+
+#boot {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+}
+
+.boot-door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.2%;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .07) 1px, transparent 0) 0 0 / 22px 22px,
+        radial-gradient(55% 55% at 50% 42%, rgba(30, 64, 216, .5), transparent 70%) 0 0 / 200% 100% no-repeat,
+        var(--ink);
+    transition: transform .95s var(--ease);
+}
+
+.boot-door-l {
+    left: 0;
+}
+
+.boot-door-r {
+    right: 0;
+    background-position: 0 0, 100% 0, 0 0;
+}
+
+#boot.boot-open .boot-door-l {
+    transform: translateX(-101%);
+    border-right: 2px solid var(--marigold);
+}
+
+#boot.boot-open .boot-door-r {
+    transform: translateX(101%);
+    border-left: 2px solid var(--marigold);
+}
+
+.boot-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    padding: 24px;
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+#boot.boot-done .boot-content {
+    opacity: 0;
+    transform: scale(.96);
+}
+
+.boot-arch {
+    width: clamp(120px, 20vw, 160px);
+    height: auto;
+    overflow: visible;
+    margin-bottom: 18px;
+}
+
+.boot-line {
+    fill: none;
+    stroke: var(--marigold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    animation: bootDraw 1.3s var(--ease) both;
+}
+
+.boot-line-inner {
+    stroke: rgba(255, 255, 255, .55);
+    stroke-width: 1.2;
+    animation-delay: .35s;
+}
+
+.boot-sun {
+    fill: var(--marigold);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse 2.4s ease-in-out infinite;
+}
+
+.boot-finial {
+    fill: var(--marigold);
+    animation: fadeUp .6s var(--ease) .9s both;
+}
+
+.boot-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    line-height: 1.1;
+    animation: fadeUp .7s var(--ease) .25s both;
+}
+
+.boot-role {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .6);
+    margin-bottom: 22px;
+    animation: fadeUp .7s var(--ease) .4s both;
+}
+
+.boot-status {
+    width: min(280px, 70vw);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .75);
+    font-variant-numeric: tabular-nums;
+}
+
+#boot-num {
+    color: var(--marigold);
+    font-weight: 700;
+}
+
+#boot-msg.swap {
+    animation: fadeUp .35s var(--ease) both;
+}
+
+.boot-meter {
+    width: min(280px, 70vw);
+    height: 3px;
+    margin-top: 8px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, .14);
+    overflow: hidden;
+}
+
+.boot-meter i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--turquoise), var(--marigold));
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+#boot-skip {
+    position: absolute;
+    z-index: 3;
+    right: 24px;
+    bottom: 24px;
+    font: 600 .8rem var(--body);
+    color: rgba(255, 255, 255, .7);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .25);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color .25s, border-color .25s;
+}
+
+#boot-skip:hover {
+    color: var(--white);
+    border-color: var(--marigold);
+}
+
+#boot-skip:focus-visible {
+    outline-color: var(--marigold);
+}
+
+@keyframes bootDraw {
+    from {
+        stroke-dashoffset: 1;
+    }
+}
+
+/* Assignment cards are interactive links to their individual projects. */
+.assignment-cards[data-project] { cursor: pointer; }
+.assignment-cards[data-project]:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 4px; }
+
+
+
+
+/* ============ FOOTER ============ */
+.site-footer {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: #fff;
+    padding: clamp(56px, 7vw, 88px) var(--side) 0;
+    border-top: 4px solid var(--marigold);
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    left: -170px;
+    bottom: -220px;
+    border: 2px dashed rgba(255, 182, 39, .3);
+    animation: spin 60s linear infinite;
+    pointer-events: none;
+}
+
+.footer-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr .8fr 1fr 1.3fr;
+    gap: 48px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--marigold);
+    animation: pulse 2.4s ease-in-out infinite;
+}
+
+.footer-logo h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.6rem;
+}
+
+.footer-role {
+    margin: 4px 0 14px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--marigold);
+}
+
+.footer-about {
+    max-width: 44ch;
+    color: rgba(255, 255, 255, .72);
+    font-size: .97rem;
+}
+
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.footer-social a {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 22px 22px 8px 8px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .16);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: transform .3s var(--ease), background .25s, color .25s, border-color .25s;
+}
+
+.footer-social a:hover {
+    transform: translateY(-5px);
+    background: var(--cobalt);
+    border-color: var(--cobalt);
+}
+
+.footer-social a.fs-whatsapp:hover {
+    background: #25D366;
+    border-color: #25D366;
+}
+
+.footer-social a.fs-github:hover {
+    background: #000;
+    border-color: #000;
+}
+
+.footer-social a.fs-linkedin:hover {
+    background: #0A66C2;
+    border-color: #0A66C2;
+}
+
+.footer-social a.fs-mail:hover {
+    background: #FF8A8A;
+    border-color: #FF8A8A;
+    color: var(--ink);
+}
+
+.footer-social a.fs-phone:hover {
+    background: var(--marigold);
+    border-color: var(--marigold);
+    color: var(--ink);
+}
+
+.footer-col {
+    min-width: 0;
+}
+
+.footer-col h3 {
+    position: relative;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+}
+
+.footer-col h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--turquoise), var(--marigold));
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    color: rgba(255, 255, 255, .75);
+    text-decoration: none;
+    transition: color .25s, transform .25s var(--ease);
+}
+
+.footer-col li a i {
+    font-size: .75rem;
+    color: var(--marigold);
+}
+
+.footer-col li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.footer-tags li {
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .06);
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 7px 0;
+    color: rgba(255, 255, 255, .78);
+    font-size: .95rem;
+    overflow-wrap: anywhere;
+}
+
+.footer-contact li i {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px 16px 6px 6px;
+    background: rgba(255, 182, 39, .14);
+    color: var(--marigold);
+    font-size: .85rem;
+}
+
+.footer-contact li span,
+.footer-contact li a {
+    padding-top: 4px;
+}
+
+.footer-contact li a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .25s;
+}
+
+.footer-contact li a:hover {
+    color: var(--marigold);
+    text-decoration: underline;
+}
+
+.footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--marigold);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .25s var(--ease), box-shadow .25s, background .25s;
+}
+
+.footer-cta:hover {
+    transform: translateY(-3px);
+    background: #fff;
+    box-shadow: 0 12px 24px -10px rgba(255, 182, 39, .7);
+}
+
+.footer-bottom {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: clamp(40px, 5vw, 64px);
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, .14);
+    font-size: .9rem;
+    color: rgba(255, 255, 255, .65);
+}
+
+.footer-made i {
+    color: #FF6B81;
+    margin: 0 2px;
+}
+
+.footer-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    transition: background .25s, color .25s, border-color .25s, transform .25s var(--ease);
+}
+
+.footer-top:hover {
+    background: var(--marigold);
+    border-color: var(--marigold);
+    color: var(--ink);
+    transform: translateY(-3px);
+}
+
+.site-footer :focus-visible {
+    outline-color: var(--marigold);
+}
+
+@media (max-width: 1000px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
